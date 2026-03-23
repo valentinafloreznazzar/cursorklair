@@ -1,42 +1,12 @@
-# The Challenge: Make One Person's Hard Day Easier
+# Make One Person's Hard Day Easier
 
 ---
 
-## The Problem Space
+Pick someone whose daily life is harder than it needs to be.
 
-Millions of people carry invisible weight every day.
+The problem space is invisible labour and burnout — the nurse who spends two hours on documentation after a shift, the small business owner drowning in admin, the carer holding an entire family's schedule in her head, the single parent who can't afford to drop a single thing.
 
-The nurse who spends two hours after a shift on documentation she'll never have time to review. The small business owner drowning in invoices, follow-ups, and admin that never ends. The carer who holds an entire family's schedule in her head and never gets to put it down. The single parent who has to be in three places at once and can't afford to drop a single thing.
-
-This is invisible labour. It's relentless, undervalued, and exhausting. It doesn't show up in productivity dashboards. It doesn't get automated. It just accumulates.
-
-Burnout is the endpoint — but the journey there is made of a thousand small frictions, each one reasonable, each one survivable, each one quietly grinding someone down.
-
----
-
-## What a Strong Solution Looks Like
-
-**One real person. One real problem. One working agent.**
-
-Not a platform for everyone. Not a dashboard with twelve features. One person, with a specific hard thing in their day, and a tool that actually helps with that specific thing.
-
-Strong solutions will:
-
-- Come from a real conversation with a real person before a single line of code was written
-- Solve something concrete, not something vague
-- Be deployed and working — not a prototype, not a demo, a live thing
-- Feel like it was made for someone, because it was
-
-The technology is a means. The empathy is the point.
-
----
-
-## What Judges Want to See
-
-- **Did you talk to someone?** The best projects will show evidence of a real conversation. What did they say? What surprised you? What did you build because of it?
-- **Does it actually help?** Not "could help in theory." Does it do a thing that makes that person's day meaningfully easier?
-- **Is it working and deployed?** Judges will open the URL. It needs to be live.
-- **Did you push the tools?** Cursor is there to let you build things you couldn't build alone. Did you use it to reach further than you expected?
+We're not going to tell you what to build or what form it should take. Talk to someone. Find something concrete. Build it.
 
 ---
 
@@ -44,14 +14,24 @@ The technology is a means. The empathy is the point.
 
 These are sparks, not prescriptions. The best ideas will come from conversations you haven't had yet.
 
-- **A carer managing appointments** — medications, GP visits, school pickups, benefit renewals. A single place that holds it all and reminds the right person at the right time.
-- **A small business owner drowning in admin** — quotes, follow-ups, invoices, scheduling. An agent that handles the back-and-forth so they can focus on the work they actually do.
-- **A nurse with too much to document** — end-of-shift notes, handover summaries, incident logs. Something that listens, structures, and drafts so they can go home.
-- **A single parent navigating systems** — benefits, school forms, housing, childcare. Something that reads the jargon and tells them what they actually need to do next.
+- **A carer managing medications, appointments, and renewals** — across multiple people. A single place that holds it all and reminds the right person at the right time.
+- **A small business owner drowning in quotes, follow-ups, invoices, scheduling** — an agent that handles the back-and-forth so they can focus on the work they actually do.
+- **A nurse with too much to document at the end of a shift** — end-of-shift notes, handover summaries, incident logs. Something that listens, structures, and drafts so they can go home.
+- **A single parent navigating benefits, school forms, housing, childcare** — something that reads the jargon and tells them what they actually need to do next.
 
 ---
 
-## One Last Thing
+## Judging Rubric
+
+| Criterion | Weight | What we're looking for |
+|-----------|--------|------------------------|
+| **Real Utility** | 30% | Does it solve one concrete, specific problem for a real person? |
+| **Creative Ambition** | 20% | Did you reach for something unexpected? |
+| **Technical Execution & Tool Use** | 25% | Is it deployed and working? Did you push Cursor? |
+| **Problem Understanding** | 15% | Can you clearly explain who this is for and why it matters? |
+| **Pitch & Demo** | 10% | Clear, gets to the point, shows it working live. Round 1 is 2 minutes — who is this person, what is their hard day, what does your tool do, show it working. |
+
+---
 
 The best projects will come from a real conversation.
 

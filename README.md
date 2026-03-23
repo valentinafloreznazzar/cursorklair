@@ -16,11 +16,9 @@ No technical background required. If you can describe what needs to exist, you c
 
 **Make one person's hard day easier.**
 
-Not a platform. Not a product. One agent, designed for one real person you know who has a genuinely hard job or situation — a nurse, a single parent, a small business owner, a carer.
+Not a platform. Not a product. Pick someone whose daily life is harder than it needs to be — a nurse, a single parent, a small business owner, a carer — and build something that solves one specific, concrete problem in their day.
 
 You have to actually talk to that person before you build.
-
-The global issue is invisible labour and burnout. The personal hook is empathy.
 
 Full brief in [CHALLENGE.md](./CHALLENGE.md).
 
@@ -52,9 +50,11 @@ Judges include an engineer from Cursor, VCs, and technical leaders.
 ## Agenda
 
 - **Sunday, March 22nd** — Application deadline
-- **Tuesday, March 24th** (Evening) — Meetup at IE University — challenge reveal, team formation, Q&A, Cursor credits distributed
-- **Wednesday, March 25th** (15:00) — Mentor session at IE 4th floor hub — refine your project, practice your pitch
-- **Wednesday, March 25th** (17:00) — Finale in the auditorium — pitches, jury Q&A, deliberation, awards, networking
+- **Tuesday, March 24th** (evening) — Meetup at IE University — challenge reveal, team formation, Q&A, Cursor credits distributed
+- **Wednesday, March 25th** (15:00) — Mentor session near the auditorium — deployment help, pitch practice, last refinements. Sign-up slots + open space.
+- **Wednesday, March 25th** (16:00) — **Submission deadline. Hard cutoff. Deployed URL must be live.**
+- **Wednesday, March 25th** (16:00–17:00) — Pre-selection: judges review all submissions, up to 15 finalists chosen
+- **Wednesday, March 25th** (17:00) — Finale in the auditorium — opening, Cursor intro, challenge recap, prize reveal, finalist reveal, pitches, awards, networking
 
 ---
 
@@ -70,17 +70,14 @@ Judges include an engineer from Cursor, VCs, and technical leaders.
 
 ## How to Submit
 
-Open a PR to this repo adding a file at `submissions/your-team-name.md` using the template in [SUBMISSION.md](./SUBMISSION.md).
+Submit your project via the Google Form before **16:00 on March 25th**: [https://forms.gle/dS1H98eJoZwsXj7e7](https://forms.gle/dS1H98eJoZwsXj7e7).
 
-**PR must be opened before the finale starts (17:00 on March 25th).**
-
-Judges will access your project via the deployed URL — make sure it's live.
+You'll need your GitHub repo link and your deployed Vercel URL.
 
 ---
 
 ## Resources
 
 - [Challenge brief](./CHALLENGE.md)
-- [Submission template](./SUBMISSION.md)
 - [Practical tips](./resources/tips.md)
 - [Starter project](./starter/) — zero-config Vercel deploy, ready to build on top of
