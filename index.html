@@ -2,14 +2,17 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Klair — demo web interactiva alineada con la app iOS: mismas pestañas, datos demo y coach Gemini con contexto completo.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1">
+  <meta name="theme-color" content="#f5f3f4">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="description" content="Klair — demo web para iPhone alineada con la app iOS: mismas pestañas, datos mock y coach Gemini.">
   <title>Klair · Demo web (jurado)</title>
   <link rel="stylesheet" href="klair-app.css">
 </head>
 <body class="klair-web-body">
   <p class="page-note">
-    Esto es la <strong>versión web funcional</strong> para el jurado: las mismas <strong>6 pestañas</strong> que en Xcode (Pulse, Fuel, Sleep, Move, Klair, Vault), los mismos <strong>datos de demostración</strong> que el mock de la app, y <strong>Ask Klair</strong> con el mismo contrato de Gemini (contexto JSON + conversación). No es el binario iOS: sin HealthKit, cámara ni SwiftData local.
+    <strong>Klair web (iPhone)</strong> — misma estructura que la app: 6 pestañas, tema Klair, <strong>14 noches Oura + 14 días actividad + comidas</strong> generadas desde el mismo esquema que <code>MockData.swift</code> (<code>npm run build:demo-context</code>), Fuel con Journal / Chef Pantry, gráfico HRV, correlaciones, Vault con labs. <strong>Ask Klair</strong> usa el JSON completo con Gemini. Sin HealthKit ni cámara reales.
   </p>
 
   <div class="device-stage">

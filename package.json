@@ -9,6 +9,7 @@
     "dev": "node scripts/dev-local.cjs",
     "dev:vercel": "npx --yes vercel@latest dev",
     "start": "npx --yes serve@14 . -l 3000",
-    "deploy": "bash scripts/vercel-prod.sh"
+    "deploy": "bash scripts/vercel-prod.sh",
+    "build:demo-context": "node scripts/build-klair-demo-context.mjs"
   }
 }

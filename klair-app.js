@@ -1,5 +1,5 @@
 /**
- * Klair web — functional mirror of iOS tabs + Ask Klair coach (same Gemini contract as app).
+ * Klair web — iPhone-first UI aligned with KlairTheme + MockData (klair-demo-context.json).
  */
 ;(function () {
   const SUGGESTED = [
@@ -35,8 +35,11 @@
     contextString: '',
     tab: 'home',
     energyRating: 3,
+    sickDay: false,
     messages: [],
     sending: false,
+    fuelSegment: 0,
+    trendRange: '7d',
   }
 
   function escapeHtml(s) {
@@ -61,6 +64,108 @@
     if (score >= 70) return 'var(--klair-cyan)'
     if (score >= 55) return 'var(--klair-orange)'
     return 'var(--klair-coral)'
+  }
+
+  function wc(key, fallback) {
+    const w = state.data && state.data.webCopy
+    return (w && w[key]) || fallback
+  }
+
+  function startOfLocalDay(d) {
+    const x = new Date(d)
+    x.setHours(0, 0, 0, 0)
+    return x.getTime()
+  }
+
+  function isToday(ts) {
+    return startOfLocalDay(new Date(ts)) === startOfLocalDay(new Date())
+  }
+
+  function todayMeals() {
+    const meals = (state.data && state.data.recentMeals) || []
+    return meals.filter((m) => isToday(m.timestamp))
+  }
+
+  function sumTodayMacros() {
+    return todayMeals().reduce(
+      (a, m) => ({
+        cal: a.cal + (m.calories || 0),
+        p: a.p + (m.protein || 0),
+        c: a.c + (m.carbs || 0),
+        f: a.f + (m.fat || 0),
+      }),
+      { cal: 0, p: 0, c: 0, f: 0 }
+    )
+  }
+
+  function contributorColor(val) {
+    const v = String(val || '').toLowerCase()
+    if (v === 'optimal' || v === 'restored') return 'var(--klair-emerald)'
+    if (v === 'good' || v === 'normal') return 'var(--klair-cyan)'
+    if (v === 'fair' || v === 'moderate' || v === 'slightly_elevated') return 'var(--klair-orange)'
+    return 'var(--klair-coral)'
+  }
+
+  function formatShort(d) {
+    return new Date(d).toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' })
+  }
+
+  function ouraSortedAsc() {
+    const o = (state.data && state.data.recentOura) || []
+    return [...o].sort((a, b) => new Date(a.date) - new Date(b.date))
+  }
+
+  function trendSlice() {
+    const asc = ouraSortedAsc()
+    const n = state.trendRange === '30d' ? 14 : 7
+    return asc.slice(-n)
+  }
+
+  function renderTrendSvg() {
+    const pts = trendSlice()
+    if (!pts.length) return ''
+    const w = 300
+    const h = 100
+    const pad = 8
+    const maxY = 55
+    const minY = 0
+    const xs = pts.map((_, i) => pad + (i * (w - 2 * pad)) / Math.max(1, pts.length - 1))
+    const ys = pts.map((p) => {
+      const v = Math.min(maxY, Math.max(minY, p.hrv || 0))
+      return h - pad - ((v - minY) / (maxY - minY)) * (h - 2 * pad)
+    })
+    const lineD = xs.map((x, i) => `${i === 0 ? 'M' : 'L'} ${x} ${ys[i]}`).join(' ')
+    const areaD = `M ${xs[0]} ${h - pad} L ${xs.map((x, i) => `${x} ${ys[i]}`).join(' L ')} L ${xs[xs.length - 1]} ${h - pad} Z`
+    return `<svg class="chart-svg" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
+      <path d="${areaD}" fill="rgba(0,212,255,0.12)" />
+      <path d="${lineD}" fill="none" stroke="var(--klair-cyan)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+      ${xs.map((x, i) => `<circle cx="${x}" cy="${ys[i]}" r="3" fill="var(--klair-cyan)" />`).join('')}
+    </svg>`
+  }
+
+  function weekSummaryBlock() {
+    const o = (state.data && state.data.recentOura) || []
+    const w = o.slice(0, 7)
+    if (!w.length) return ''
+    const avg = (k) => Math.round(w.reduce((s, x) => s + (x[k] || 0), 0) / w.length)
+    const avgHrv = w.reduce((s, x) => s + (x.hrv || 0), 0) / w.length
+    return `
+      <div class="glass-card">
+        <div class="meta-label" style="margin-bottom:12px">WEEKLY SUMMARY (7D)</div>
+        <div class="stat-grid">
+          <div class="stat-cell"><div class="v" style="color:${scoreColor(avg('readiness'))}">${avg('readiness')}</div><div class="l">AVG READY</div></div>
+          <div class="stat-cell"><div class="v" style="color:${scoreColor(avg('sleep'))}">${avg('sleep')}</div><div class="l">AVG SLEEP</div></div>
+          <div class="stat-cell"><div class="v" style="color:var(--klair-cyan)">${Math.round(avgHrv)}</div><div class="l">AVG HRV</div></div>
+        </div>
+      </div>`
+  }
+
+  function showToast(msg) {
+    const t = document.createElement('div')
+    t.className = 'toast'
+    t.textContent = msg
+    document.body.appendChild(t)
+    setTimeout(() => t.remove(), 2200)
   }
 
   function seedChatFromDemo(data) {
@@ -102,49 +207,110 @@
     const stressLevel = stress > 60 ? 'Elevated' : stress > 40 ? 'Moderate' : 'Balanced'
     const stressColor = stress > 60 ? 'var(--klair-coral)' : stress > 40 ? 'var(--klair-orange)' : 'var(--klair-emerald)'
     const waterP = u.waterGoalMl > 0 ? Math.min(1, u.waterIntakeMl / u.waterGoalMl) : 0
+    const contrib = o && o.readinessContributors ? o.readinessContributors : null
 
     const energies = [
       { v: 1, label: 'Low', color: 'var(--klair-coral)', icon: '▂' },
       { v: 3, label: 'Steady', color: 'var(--klair-cyan)', icon: '▃' },
       { v: 5, label: 'Peak', color: 'var(--klair-emerald)', icon: '▆' },
     ]
+    const er = state.sickDay ? 0 : state.energyRating
 
     return `
       <div class="dashboard-home" style="padding-top:8px">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;padding-top:8px">
           <span style="font-size:20px;font-weight:700">${escapeHtml(greeting(u.name))}</span>
-          <span style="width:36px;height:36px;border-radius:50%;background:var(--klair-card);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px var(--klair-shadow);color:var(--klair-cyan)">↻</span>
+          <button type="button" class="sync-btn" data-action="sync" aria-label="Sync">↻</button>
         </div>
         <div class="meta-label" style="margin-bottom:10px">HOW IS YOUR ENERGY?</div>
         <div class="energy-row">
           ${energies
             .map(
               (e) => `
-            <button type="button" class="energy-btn ${state.energyRating === e.v ? 'selected' : 'unselected'}" data-energy="${e.v}"
-              style="${state.energyRating === e.v ? `background:${e.color};color:#fff` : `background:color-mix(in srgb, ${e.color} 14%, #fff);color:${e.color}`}">
+            <button type="button" class="energy-btn ${er === e.v ? 'selected' : 'unselected'}" data-energy="${e.v}"
+              style="${er === e.v ? `background:${e.color};color:#fff` : `background:color-mix(in srgb, ${e.color} 14%, #fff);color:${e.color}`}">
               <div style="font-size:18px;margin-bottom:4px">${e.icon}</div>${e.label}
             </button>`
             )
             .join('')}
+          <div style="width:1px;background:rgba(0,0,0,0.08);margin:4px 0"></div>
+          <button type="button" class="sick-day-btn ${state.sickDay ? 'selected' : ''}" data-action="sick"
+            style="${state.sickDay ? 'background:#C4841D;color:#fff' : 'background:#FFF3DC;color:#C4841D'}">
+            <div style="font-size:16px">${state.sickDay ? '✓' : '✕'}</div>${state.sickDay ? 'Active' : 'Sick'}
+          </button>
         </div>
-        <div class="quote-row">“Small, steady rhythms beat heroic sprints when your nervous system is listening.”</div>
+        <div class="quote-row">“${escapeHtml(wc('inspirationalQuote', 'Small, steady rhythms…'))}”</div>
         <div class="hero-gradient">
           <div class="hero-meta">⚡ DAILY ENERGY</div>
           <div class="hero-score">${readiness}</div>
-          <div class="hero-sub">${escapeHtml(o ? `Sleep ${o.sleep} · HRV trend stable vs 7d baseline.` : 'Readiness snapshot (demo data).')}</div>
+          <div class="hero-sub">${escapeHtml(wc('dailyInsight', o ? `Sleep ${o.sleep} · HRV vs 7d.` : ''))}</div>
         </div>
         <div class="glass-card">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
             <span class="meta-label" style="letter-spacing:1px">STRESS · HRV-BASED</span>
             <span style="font-size:9px;font-weight:700;padding:4px 8px;border-radius:999px;background:${stressColor}22;color:${stressColor}">${stressLevel.toUpperCase()}</span>
           </div>
-          <div class="sleep-bar"><span style="width:${Math.min(100, stress)}%"></span></div>
-          <p style="font-size:12px;color:var(--klair-text-2);margin-top:10px;line-height:1.45">Evening load can overlap with lower nocturnal HRV — prioritize wind-down.</p>
+          <div class="sleep-bar"><span class="stress-bar-fill" style="width:${Math.min(100, stress)}%"></span></div>
+          <p style="font-size:12px;color:var(--klair-text-2);margin-top:10px;line-height:1.45">${escapeHtml(wc('stressDescription', ''))}</p>
         </div>
         <div class="glass-card rings-row">
           <div class="ring-item"><div class="ring-val" style="color:${scoreColor(readiness)}">${readiness}</div><div class="ring-lab">READY</div></div>
           <div class="ring-item"><div class="ring-val" style="color:${scoreColor(o ? o.sleep : 78)}">${o ? o.sleep : 78}</div><div class="ring-lab">SLEEP</div></div>
           <div class="ring-item"><div class="ring-val" style="color:var(--klair-cyan)">${o ? Math.round(o.hrv) : 42}</div><div class="ring-lab">HRV</div></div>
+        </div>
+        ${
+          contrib
+            ? `<div class="glass-card">
+          <div class="meta-label" style="margin-bottom:10px">READINESS CONTRIBUTORS</div>
+          ${Object.entries(contrib)
+            .map(
+              ([k, v]) => `
+            <div class="contrib-row">
+              <span class="contrib-dot" style="background:${contributorColor(v)}"></span>
+              <span style="flex:1">${escapeHtml(k.replace(/_/g, ' '))}</span>
+              <strong style="color:${contributorColor(v)}">${escapeHtml(String(v).replace(/_/g, ' '))}</strong>
+            </div>`
+            )
+            .join('')}
+        </div>`
+            : ''
+        }
+        <div class="glass-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <span class="meta-label">TRENDS</span>
+            <div class="trend-toggle">
+              <button type="button" class="${state.trendRange === '7d' ? 'is-on' : ''}" data-trend="7d">7D</button>
+              <button type="button" class="${state.trendRange === '30d' ? 'is-on' : ''}" data-trend="30d">30D</button>
+            </div>
+          </div>
+          <div style="font-size:10px;color:var(--klair-text-3);margin-bottom:4px">HRV (Oura)</div>
+          <div class="chart-wrap">${renderTrendSvg()}</div>
+          <div style="display:flex;gap:12px;margin-top:8px;font-size:10px;color:var(--klair-text-3)">
+            <span>● HRV</span><span style="color:var(--klair-orange)">■ Glycemic proxy</span>
+          </div>
+        </div>
+        ${weekSummaryBlock()}
+        ${
+          (d.correlations || [])
+            .map(
+              (c) => `
+          <div class="glass-card correlation-block">
+            <div style="font-size:12px;font-weight:700">${escapeHtml(c.label)}
+              <span class="r-pill" style="background:${c.r >= 0 ? 'rgba(0,201,167,0.15)' : 'rgba(255,71,87,0.12)'};color:${c.r >= 0 ? 'var(--klair-emerald)' : 'var(--klair-coral)'}">r = ${c.r.toFixed(2)}</span>
+            </div>
+            <p style="margin:6px 0 0;font-size:12px;color:var(--klair-text-2);line-height:1.4">${escapeHtml(c.description)}</p>
+          </div>`
+            )
+            .join('') || ''
+        }
+        <div class="glass-card">
+          <div class="meta-label" style="margin-bottom:10px">CONTEXTUAL INSIGHTS</div>
+          ${(d.healthAlerts || [])
+            .map(
+              (a) => `
+            <div class="insight-tile"><strong>${escapeHtml(a.title)}</strong> — ${escapeHtml(a.message)}</div>`
+            )
+            .join('')}
         </div>
         <div class="glass-card">
           <div class="meta-label" style="margin-bottom:10px">HYDRATION</div>
@@ -156,52 +322,97 @@
             <div style="font-size:24px;font-weight:700;color:var(--klair-cyan)">${Math.round(waterP * 100)}%</div>
           </div>
         </div>
-        ${(d.healthAlerts || [])
-          .slice(0, 3)
-          .map(
-            (a) => `
-          <div class="alert-card ${a.severity === 'info' ? 'info' : ''}">
-            <h4>${escapeHtml(a.title)}</h4>
-            <p>${escapeHtml(a.message)}</p>
-          </div>`
-          )
-          .join('')}
+        <div class="glass-card">
+          <div class="meta-label" style="margin-bottom:8px">BIO-NARRATIVE</div>
+          <p style="margin:0;font-size:13px;color:var(--klair-text-2);line-height:1.5">${escapeHtml(wc('bioNarrative', ''))}</p>
+        </div>
       </div>`
   }
 
-  function renderFuel() {
-    const meals = (state.data && state.data.recentMeals) || []
+  function macroRingHtml(mac, goal) {
+    const pct = goal > 0 ? Math.min(1, mac.cal / goal) : 0
+    const deg = pct * 360
     return `
-      <div style="padding-top:12px">
-        <h2 style="font-size:22px;font-weight:700;margin:0 0 4px">Fuel</h2>
-        <p class="meta-label" style="margin-bottom:16px;letter-spacing:0.5px">Food journal · demo</p>
+      <div class="macro-ring-wrap">
+        <div class="macro-ring" style="background:conic-gradient(var(--klair-cyan) ${deg}deg, rgba(0,0,0,0.06) 0)">
+          <div style="width:100px;height:100px;border-radius:50%;background:var(--klair-card);display:flex;flex-direction:column;align-items:center;justify-content:center">
+            <span class="ring-label">TODAY</span>
+            <span class="ring-cal">${Math.round(mac.cal)}</span>
+            <span class="ring-label">kcal</span>
+          </div>
+        </div>
+      </div>
+      <div class="macro-legend"><span class="legend-p">P ${Math.round(mac.p)}g</span><span class="legend-c">C ${Math.round(mac.c)}g</span><span class="legend-f">F ${Math.round(mac.f)}g</span></div>`
+  }
+
+  function renderFuel() {
+    const d = state.data
+    const meals = (d && d.recentMeals) || []
+    const goal = (d && d.user && d.user.dailyCalorieGoal) || 1950
+    const mac = sumTodayMacros()
+    const recipes = (d && d.chefRecipes) || []
+
+    const journal = `
+      <div class="segment-control">
+        <button type="button" class="segment-btn ${state.fuelSegment === 0 ? 'is-on' : ''}" data-seg="0">JOURNAL</button>
+        <button type="button" class="segment-btn ${state.fuelSegment === 1 ? 'is-on' : ''}" data-seg="1">CHEF PANTRY</button>
+      </div>
+      ${
+        state.fuelSegment === 0
+          ? `
+        ${macroRingHtml(mac, goal)}
         <div class="glass-card">
-          <div class="meta-label" style="margin-bottom:8px">TODAY & RECENT</div>
+          <div class="meta-label" style="margin-bottom:8px">FOOD JOURNAL (SYNCED MOCK)</div>
           ${meals
+            .slice(0, 24)
             .map(
               (m) => `
             <div class="meal-row">
-              <span>${escapeHtml(m.mealTitle)}${m.isLateNight ? ' 🌙' : ''}</span>
+              <span>${escapeHtml(m.mealTitle)}${m.isLateNight ? ' 🌙' : ''}${m.isHighGlycemic ? ' ⚡' : ''}<br/><small style="color:var(--klair-text-3)">${formatShort(m.timestamp)}</small></span>
               <strong>${Math.round(m.calories)} kcal</strong>
             </div>`
             )
             .join('')}
         </div>
-        <p style="font-size:12px;color:var(--klair-text-3);line-height:1.5">En la app iOS: escaneo de comida con cámara y análisis Gemini (no disponible en web).</p>
-      </div>`
+        <div class="glass-card" style="text-align:center;padding:20px">
+          <div class="meta-label" style="margin-bottom:8px">SCAN MEAL</div>
+          <p style="font-size:13px;color:var(--klair-text-2);margin:0">En iOS: cámara + Gemini. En web: demo estática.</p>
+          <button type="button" class="chip" data-action="mock-camera" style="margin-top:12px">Simular escaneo (demo)</button>
+        </div>`
+          : `
+        <div class="meta-label" style="margin-bottom:12px">KLAIR CHEF · RECETAS (MOCK)</div>
+        ${recipes
+          .map(
+            (r) => `
+          <div class="recipe-card">
+            <h4>${escapeHtml(r.title)}</h4>
+            <div class="macros">${Math.round(r.calories)} kcal · P ${Math.round(r.protein)}g · C ${Math.round(r.carbs)}g · F ${Math.round(r.fat)}g</div>
+            <div class="why">${escapeHtml(r.why)}</div>
+            <div style="font-size:11px;color:var(--klair-text-3);margin-top:8px">${(r.ingredients || []).map((x) => escapeHtml(x)).join(' · ')}</div>
+          </div>`
+          )
+          .join('')}
+        <p style="font-size:12px;color:var(--klair-text-3)">Misma lógica que iOS: recetas según contexto; aquí datos fijos del JSON.</p>`
+      }`
+
+    return `<div style="padding-top:8px"><h1 class="screen-title">Fuel</h1>${journal}</div>`
   }
 
   function renderSleep() {
-    const o = state.data && state.data.recentOura && state.data.recentOura[0]
+    const d = state.data
+    const rows = (d && d.recentOura) || []
+    const o = rows[0]
     if (!o) return '<p>No data</p>'
     const totalH = (o.totalMinutes / 60).toFixed(1)
+    const maxTot = Math.max(...rows.map((x) => x.totalMinutes || 1), 1)
+
     return `
-      <div style="padding-top:12px">
-        <h2 style="font-size:22px;font-weight:700;margin:0 0 16px">Sleep</h2>
+      <div style="padding-top:8px">
+        <h1 class="screen-title">Sleep</h1>
         <div class="hero-gradient" style="background:linear-gradient(135deg, var(--klair-indigo), var(--klair-amethyst))">
           <div class="hero-meta">LAST NIGHT</div>
           <div class="hero-score">${o.sleep}</div>
-          <div class="hero-sub">Score · ~${totalH}h total · efficiency ${Math.round(o.sleepEfficiency)}%</div>
+          <div class="hero-sub">~${totalH}h total · efficiency ${Math.round(o.sleepEfficiency)}%</div>
         </div>
         <div class="glass-card stat-grid">
           <div class="stat-cell"><div class="v">${Math.round(o.deepMinutes)}m</div><div class="l">DEEP</div></div>
@@ -210,49 +421,154 @@
         </div>
         <div class="glass-card">
           <div class="meta-label">VITALS</div>
-          <div style="margin-top:10px;font-size:14px;line-height:1.6">
-            RHR ${Math.round(o.restingHeartRate)} bpm · Resp ${o.respiratoryRate} · SpO₂ ${Math.round(o.spo2)}%
+          <div style="margin-top:10px;font-size:14px;line-height:1.7">
+            RHR ${Math.round(o.restingHeartRate)} bpm · Resp ${o.respiratoryRate} · SpO₂ ${Math.round(o.spo2)}%<br/>
+            Latency ${Math.round(o.sleepLatency)} min · Temp Δ ${o.temperatureDeviation >= 0 ? '+' : ''}${o.temperatureDeviation}°
+          </div>
+        </div>
+        <div class="glass-card">
+          <div class="meta-label" style="margin-bottom:12px">LAST 7 NIGHTS</div>
+          ${rows
+            .slice(0, 7)
+            .map((x) => {
+              const tot = x.totalMinutes || 1
+              const dw = (x.deepMinutes / tot) * 100
+              const rw = (x.remMinutes / tot) * 100
+              const lw = 100 - dw - rw
+              return `
+            <div class="sleep-history-row">
+              <div class="row-top"><span>${formatShort(x.date)}</span><span>Sleep ${x.sleep}</span></div>
+              <div class="sleep-stacks">
+                <span class="stack-deep" style="width:${dw}%"></span>
+                <span class="stack-rem" style="width:${rw}%"></span>
+                <span class="stack-light" style="width:${lw}%"></span>
+              </div>
+            </div>`
+            })
+            .join('')}
+        </div>
+        <div class="glass-card">
+          <div class="meta-label">SLEEP DURATION TREND</div>
+          <div style="display:flex;margin-top:12px;height:12px;border-radius:6px;overflow:hidden;gap:2px">
+            ${rows
+              .slice(0, 7)
+              .reverse()
+              .map(
+                (x) =>
+                  `<span style="flex:1;height:100%;background:var(--klair-indigo);opacity:${0.35 + (0.65 * (x.totalMinutes || 0)) / maxTot}"></span>`
+              )
+              .join('')}
           </div>
         </div>
       </div>`
   }
 
   function renderMove() {
-    const a = state.data && state.data.recentActivity && state.data.recentActivity[0]
-    const w = state.data && state.data.healthKitWorkouts && state.data.healthKitWorkouts[0]
+    const d = state.data
+    const acts = (d && d.recentActivity) || []
+    const wk = (d && d.healthKitWorkouts) || []
+    const en = (d && d.energyActivities) || []
+    const today = acts[0]
     return `
-      <div style="padding-top:12px">
-        <h2 style="font-size:22px;font-weight:700;margin:0 0 16px">Move</h2>
+      <div style="padding-top:8px">
+        <h1 class="screen-title">Move</h1>
         <div class="glass-card">
           <div class="meta-label">TODAY</div>
-          <div style="font-size:36px;font-weight:700;margin-top:8px;color:var(--klair-orange)">${a ? a.steps.toLocaleString() : '—'}</div>
-          <div style="font-size:13px;color:var(--klair-text-2)">steps · ${a ? Math.round(a.activeCalories) : '—'} active kcal</div>
+          <div style="font-size:36px;font-weight:700;margin-top:8px;color:var(--klair-orange)">${today ? today.steps.toLocaleString() : '—'}</div>
+          <div style="font-size:13px;color:var(--klair-text-2)">steps · ${today ? Math.round(today.activeCalories) : '—'} kcal · ${today ? escapeHtml(today.workoutType) : '—'}</div>
         </div>
-        ${
-          w
-            ? `<div class="glass-card"><div class="meta-label">LATEST WORKOUT</div><div style="margin-top:8px;font-weight:600">${escapeHtml(w.name)}</div><div style="font-size:13px;color:var(--klair-text-2)">${Math.round(w.durationMinutes)} min · ${w.kcal != null ? Math.round(w.kcal) : '—'} kcal</div></div>`
-            : ''
-        }
+        <div class="glass-card">
+          <div class="meta-label" style="margin-bottom:8px">14-DAY ACTIVITY</div>
+          ${acts
+            .map(
+              (a) => `
+            <div class="activity-list-row">
+              <span>${formatShort(a.date)} · ${escapeHtml(a.workoutType)}</span>
+              <strong>${a.steps.toLocaleString()} st</strong>
+            </div>`
+            )
+            .join('')}
+        </div>
+        <div class="glass-card">
+          <div class="meta-label" style="margin-bottom:8px">WORKOUTS (HEALTHKIT)</div>
+          ${wk
+            .map(
+              (w) => `
+            <div class="activity-list-row">
+              <span>${escapeHtml(w.name)}</span>
+              <span>${Math.round(w.durationMinutes)} min</span>
+            </div>`
+            )
+            .join('')}
+        </div>
+        <div class="glass-card">
+          <div class="meta-label" style="margin-bottom:8px">ENERGY LEDGER</div>
+          ${en
+            .map(
+              (e) => `
+            <div class="activity-list-row">
+              <span>${escapeHtml(e.context)} (${e.effect})</span>
+              <span>${e.energyDelta > 0 ? '+' : ''}${e.energyDelta}</span>
+            </div>`
+            )
+            .join('')}
+        </div>
       </div>`
   }
 
   function renderVault() {
-    const u = state.data && state.data.user
+    const d = state.data
+    const u = d && d.user
     if (!u) return ''
+    const labs = (d && d.labResults) || []
+    const sym = (d && d.cycleSymptoms) || []
+    const mens = (d && d.healthKitMenstrual) || []
     return `
-      <div style="padding-top:12px">
-        <h2 style="font-size:22px;font-weight:700;margin:0 0 16px">Vault</h2>
+      <div style="padding-top:8px">
+        <h1 class="screen-title">Vault</h1>
         <div class="glass-card">
           <div class="meta-label">PROFILE</div>
-          <div style="margin-top:10px;font-size:16px;font-weight:700">${escapeHtml(u.name)}</div>
-          <div style="font-size:14px;color:var(--klair-text-2);margin-top:8px;line-height:1.5">
-            Age ${u.age} · Cycle day ${u.cycleDay} · ${escapeHtml(u.cyclePhase)}<br/>
-            ${escapeHtml(u.knownConditions)}
+          <div style="margin-top:10px;font-size:17px;font-weight:700">${escapeHtml(u.name)}</div>
+          <div style="font-size:13px;color:var(--klair-text-2);margin-top:10px;line-height:1.6">
+            ${u.age} años · ${u.heightCm} cm · ${u.weightKg} kg · BMI ${u.bmi}<br/>
+            Ciclo día ${u.cycleDay}/${u.cycleLength} · fase <strong>${escapeHtml(u.cyclePhase)}</strong>
           </div>
         </div>
         <div class="glass-card">
+          <div class="meta-label">CONDITIONS & MEDS</div>
+          <p style="margin:8px 0 0;font-size:13px;color:var(--klair-text-2)">${escapeHtml(u.knownConditions)}</p>
+          <p style="margin:8px 0 0;font-size:13px;color:var(--klair-text-2)">${escapeHtml(u.medications)}</p>
+        </div>
+        <div class="glass-card">
+          <div class="meta-label">VITALS</div>
+          <p style="margin:8px 0 0;font-size:13px">BP ${escapeHtml(u.bloodPressure)} (${escapeHtml(u.bpCategory)}) · Glucose ${u.glucoseMgDl} mg/dL</p>
+        </div>
+        <div class="glass-card">
+          <div class="meta-label">LABS</div>
+          ${labs
+            .map(
+              (l) => `
+            <div class="lab-row">
+              <span>${escapeHtml(l.testType)}</span>
+              <strong>${l.value} ${escapeHtml(l.unit)}</strong>
+              <span style="font-size:11px;color:var(--klair-text-3)">${escapeHtml(l.status)}</span>
+            </div>`
+            )
+            .join('')}
+        </div>
+        <div class="glass-card">
+          <div class="meta-label">CYCLE & SYMPTOMS</div>
+          ${sym
+            .map(
+              (s) => `
+            <p style="font-size:13px;margin:8px 0 0">${escapeHtml(s.topSymptoms)} · day ${s.cycleDay} · ${escapeHtml(s.phase)}</p>`
+            )
+            .join('')}
+          ${mens.map((m) => `<p style="font-size:12px;color:var(--klair-text-3);margin:6px 0 0">${formatShort(m.date)} · ${escapeHtml(m.flow)}</p>`).join('')}
+        </div>
+        <div class="glass-card">
           <div class="meta-label">GOALS</div>
-          <p style="margin:8px 0 0;font-size:14px;color:var(--klair-text-2)">${escapeHtml(u.healthGoals)}</p>
+          <p style="margin:8px 0 0;font-size:13px;color:var(--klair-text-2)">${escapeHtml(u.healthGoals)}</p>
         </div>
       </div>`
   }
@@ -282,7 +598,7 @@
         <div class="ask-header">
           <div>
             <h2>Ask Klair</h2>
-            <div class="sub">Gemini · mismo contexto JSON que la app iOS (demo)</div>
+            <div class="sub">Gemini · mismo JSON que buildContextJSON (demo)</div>
           </div>
           <div class="ask-logo">✦</div>
         </div>
@@ -313,6 +629,40 @@
     root.querySelectorAll('.energy-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
         state.energyRating = Number(btn.getAttribute('data-energy'))
+        state.sickDay = false
+        renderPanels()
+        renderTabBar()
+      })
+    })
+
+    root.querySelectorAll('[data-action="sick"]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        state.sickDay = !state.sickDay
+        if (state.sickDay) state.energyRating = 0
+        renderPanels()
+        renderTabBar()
+      })
+    })
+
+    root.querySelectorAll('[data-action="sync"]').forEach((btn) => {
+      btn.addEventListener('click', () => showToast('Demo: datos estáticos (mismo mock que iOS).'))
+    })
+
+    root.querySelectorAll('[data-action="mock-camera"]').forEach((btn) => {
+      btn.addEventListener('click', () => showToast('En la app iOS esto abre la cámara y Gemini.'))
+    })
+
+    root.querySelectorAll('[data-trend]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        state.trendRange = btn.getAttribute('data-trend')
+        renderPanels()
+        renderTabBar()
+      })
+    })
+
+    root.querySelectorAll('[data-seg]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        state.fuelSegment = Number(btn.getAttribute('data-seg'))
         renderPanels()
         renderTabBar()
       })

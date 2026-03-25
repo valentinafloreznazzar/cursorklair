@@ -18,7 +18,7 @@ This repo is here to help you move quickly from idea to deployment.
 
 ### Klair (this submission — iOS app)
 
-The shipped product is the **native iOS app** in [`Klair/`](./Klair/) (SwiftUI, open `Klair.xcodeproj` in Xcode). The **repository root** hosts an **interactive web demo on Vercel** for judges: the same **six tabs** as the app (Pulse, Fuel, Sleep, Move, Klair, Vault), demo data in [`klair-demo-context.json`](./klair-demo-context.json), and **Ask Klair** using the same **Gemini coach contract** as iOS (`klairAgentReply` via `POST /api/gemini` with `mode: "klairCoach"`). Native-only features (HealthKit, camera meal scan, SwiftData persistence) remain in the iOS build. Details: [SUBMISSION.md](./SUBMISSION.md).
+The shipped product is the **native iOS app** in [`Klair/`](./Klair/) (SwiftUI, open `Klair.xcodeproj` in Xcode). The **repository root** hosts an **interactive web demo on Vercel** (iPhone-first): the same **six tabs** as the app, **Oura/activity/meals** density aligned with `Klair/MockData/MockData.swift` (regenerate JSON with `npm run build:demo-context`), Fuel **Journal / Chef Pantry**, Pulse **trends, contributors, correlations**, and **Ask Klair** with the same **Gemini coach contract** as iOS (`klairAgentReply` via `POST /api/gemini` with `mode: "klairCoach"`). Native-only: HealthKit live, camera scan, SwiftData. Details: [SUBMISSION.md](./SUBMISSION.md).
 
 ## 2. The Challenge
 
