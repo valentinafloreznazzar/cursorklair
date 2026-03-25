@@ -3,56 +3,113 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Klair — co-pilot de salud para iPhone. Código en GitHub; esta página es el enlace oficial desplegado del hackathon.">
+  <meta name="description" content="Klair — co-pilot de salud para iPhone. Vista estilo simulador iOS; enlace oficial del hackathon.">
   <title>Klair · App iOS</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main>
-    <header class="hero">
+    <header class="site-hero">
       <p class="eyebrow">IE University · Cursor Hackathon · March 2026</p>
       <h1>Klair</h1>
-      <p class="subtitle">Co-pilot de bio-inteligencia para <strong>iPhone</strong> (SwiftUI)</p>
+      <p class="subtitle">Co-pilot de bio-inteligencia · <strong>SwiftUI</strong> en Xcode</p>
       <p class="description">
-        El producto del equipo es la <strong>app nativa</strong>: sueño (Oura), comidas con visión, HealthKit, ciclo y un coach con IA.
-        Este sitio en Vercel es la <strong>página pública del proyecto</strong> y el enlace “deployed” que pide el hackathon; el núcleo está en el repositorio, carpeta <code>Klair/</code>.
+        La app vive en <code>Klair/</code>. Abajo, una vista tipo <strong>Simulador</strong>: misma jerarquía que en iPhone (título grande, tarjetas, coach).
       </p>
     </header>
 
-    <section class="ios-panel" aria-labelledby="app-heading">
-      <h2 id="app-heading">Probar la app iOS</h2>
-      <ol class="steps">
-        <li><strong>Código fuente:</strong> clona o abre el repo y entra en <code>Klair/</code> — abre <code>Klair.xcodeproj</code> en Xcode.</li>
-        <li><strong>Guía paso a paso:</strong> <a href="https://github.com/valentinafloreznazzar/cursorklair/blob/main/Klair/QUICKSTART.md" rel="noopener">QUICKSTART.md</a> (simulador o iPhone).</li>
-        <li><strong>Demo sin APIs:</strong> por defecto la app usa datos y respuestas de muestra (<em>mock</em>) para que el flujo se vea al instante.</li>
-        <li><strong>TestFlight:</strong> cuando tengas el enlace público, pégalo en <code>testflight-config.js</code> y vuelve a desplegar; aparecerá en la siguiente sección.</li>
-      </ol>
-      <p class="cta-row">
-        <a class="btn-secondary" href="https://github.com/valentinafloreznazzar/cursorklair/tree/main/Klair" rel="noopener">Ver carpeta Klair en GitHub</a>
-        <a class="btn-secondary ghost" href="https://github.com/valentinafloreznazzar/cursorklair" rel="noopener">Repositorio completo</a>
-      </p>
-    </section>
+    <div class="simulator-layout">
+      <figure class="iphone-column" aria-label="Vista previa estilo iPhone Simulator">
+        <div class="iphone-label">iPhone · iOS Simulator</div>
+        <div class="iphone">
+          <div class="iphone-screen">
+            <div class="iphone-screen-inner">
+              <header class="ios-top-hardware">
+                <div class="ios-status-bar">
+                  <span class="ios-time" aria-hidden="true">9:41</span>
+                  <div class="dynamic-island" aria-hidden="true"></div>
+                  <div class="ios-status-trail" aria-hidden="true">
+                    <div class="ios-signal-bars">
+                      <span></span><span></span><span></span><span></span>
+                    </div>
+                    <span class="ios-wifi"></span>
+                    <span class="ios-battery"><span class="ios-battery-level"></span></span>
+                  </div>
+                </div>
+              </header>
 
-    <section class="ios-panel testflight" aria-labelledby="tf-heading">
-      <h2 id="tf-heading">Probar en iPhone (TestFlight)</h2>
-      <div id="testflight-mount" class="testflight-mount"></div>
-    </section>
+              <div class="app-scroll">
+                <div class="app-large-title-block">
+                  <p class="app-section-eyebrow">Hoy</p>
+                  <h2 class="app-large-title">Klair</h2>
+                </div>
 
-    <section class="ios-panel muted" aria-labelledby="vercel-heading">
-      <h2 id="vercel-heading">Qué es esta URL (Vercel)</h2>
-      <p class="lede">
-        Cumple el requisito de entrega con un sitio en vivo. Abajo tienes un <strong>mini chat</strong> con el mismo backend de Gemini (<code>/api/gemini</code>) que ilustra el tono del coach; la experiencia completa es la app.
-      </p>
-    </section>
+                <div class="app-card-grid">
+                  <div class="app-metric-card">
+                    <span class="app-metric-label">Readiness</span>
+                    <span class="app-metric-value">82</span>
+                    <span class="app-metric-unit">mock</span>
+                  </div>
+                  <div class="app-metric-card">
+                    <span class="app-metric-label">Sueño</span>
+                    <span class="app-metric-value">7h 12m</span>
+                    <span class="app-metric-unit">demo</span>
+                  </div>
+                </div>
 
-    <section class="chat-panel" aria-label="Demo chat Gemini">
-      <h2>Pregunta al coach (demo web)</h2>
-      <p class="hint">Paralelo ligero al “Ask AI” de la app. Requiere <code>GEMINI_API_KEY</code> en Vercel → Environment Variables.</p>
-      <textarea id="prompt" rows="4" placeholder="Ej: Ideas de cena ligeras después de un día con poco sueño…"></textarea>
-      <button type="button" id="send" class="btn-primary">Enviar</button>
-      <div id="status" class="status" aria-live="polite"></div>
-      <article id="reply" class="reply" hidden></article>
-    </section>
+                <section class="app-grouped" aria-label="Demo coach Ask AI">
+                  <h3 class="app-group-header">Ask Klair</h3>
+                  <div class="app-group-body">
+                    <p class="app-group-footnote">Paralelo al Ask AI de la app · <code>/api/gemini</code></p>
+                    <label class="ios-field-label" for="prompt">Mensaje</label>
+                    <textarea id="prompt" class="ios-text-field" rows="3" placeholder="Ej: Ideas ligeras para cenar…"></textarea>
+                    <button type="button" id="send" class="ios-pill-button">Enviar</button>
+                    <div id="status" class="ios-footnote" aria-live="polite"></div>
+                    <article id="reply" class="ios-bubble-reply" hidden></article>
+                  </div>
+                </section>
+
+                <p class="app-legal-note">Vercel = enlace del hackathon. Binario real: Xcode o TestFlight.</p>
+              </div>
+
+              <nav class="ios-tab-bar" aria-label="Barra de pestañas (decorativa)">
+                <div class="ios-tab ios-tab-active"><span class="ios-tab-icon" aria-hidden="true">◉</span>Inicio</div>
+                <div class="ios-tab"><span class="ios-tab-icon" aria-hidden="true">◇</span>Fuel</div>
+                <div class="ios-tab"><span class="ios-tab-icon" aria-hidden="true">✦</span>Ask</div>
+                <div class="ios-tab"><span class="ios-tab-icon" aria-hidden="true">◎</span>Perfil</div>
+              </nav>
+              <div class="iphone-home-indicator" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+      </figure>
+
+      <div class="side-panels">
+        <section class="ios-panel" aria-labelledby="app-heading">
+          <h2 id="app-heading">Probar la app iOS</h2>
+          <ol class="steps">
+            <li><strong>Código:</strong> <code>Klair/</code> → <code>Klair.xcodeproj</code> en Xcode.</li>
+            <li><strong>Guía:</strong> <a href="https://github.com/valentinafloreznazzar/cursorklair/blob/main/Klair/QUICKSTART.md" rel="noopener">QUICKSTART.md</a>.</li>
+            <li><strong>Mock:</strong> datos de muestra por defecto.</li>
+            <li><strong>TestFlight:</strong> <code>testflight-config.js</code> → redeploy.</li>
+          </ol>
+          <p class="cta-row">
+            <a class="btn-secondary" href="https://github.com/valentinafloreznazzar/cursorklair/tree/main/Klair" rel="noopener">Carpeta Klair</a>
+            <a class="btn-secondary ghost" href="https://github.com/valentinafloreznazzar/cursorklair" rel="noopener">Repo</a>
+          </p>
+        </section>
+
+        <section class="ios-panel testflight" aria-labelledby="tf-heading">
+          <h2 id="tf-heading">TestFlight</h2>
+          <div id="testflight-mount" class="testflight-mount"></div>
+        </section>
+
+        <section class="ios-panel muted" aria-labelledby="vercel-heading">
+          <h2 id="vercel-heading">Esta URL</h2>
+          <p class="lede">Cumple el requisito de entrega con sitio en vivo; el marco simula cómo se ve Klair en el Simulador.</p>
+        </section>
+      </div>
+    </div>
   </main>
   <script src="testflight-config.js"></script>
   <script>
@@ -68,7 +125,7 @@
       if (ok) {
         const p = document.createElement('p');
         p.className = 'lede';
-        p.textContent = 'Instala la app TestFlight desde el App Store si no la tienes. Luego abre el enlace en el iPhone.';
+        p.textContent = 'Instala TestFlight y abre el enlace en el iPhone.';
         const row = document.createElement('p');
         row.className = 'cta-row';
         const a = document.createElement('a');
@@ -76,7 +133,7 @@
         a.rel = 'noopener noreferrer';
         a.target = '_blank';
         a.href = raw;
-        a.textContent = 'Abrir invitación en TestFlight';
+        a.textContent = 'Abrir TestFlight';
         row.appendChild(a);
         mount.appendChild(p);
         mount.appendChild(row);
@@ -85,7 +142,7 @@
         p.className = 'lede';
         p.append(
           document.createTextNode(
-            'Cuando App Store Connect te dé el enlace público, edita testflight-config.js en la raíz del repo (window.KLAIR_TESTFLIGHT_URL), haz commit y deploy. Mientras tanto: '
+            'Edita testflight-config.js (window.KLAIR_TESTFLIGHT_URL) y redespliega. Mientras: '
           )
         );
         const a = document.createElement('a');
@@ -93,7 +150,7 @@
         a.rel = 'noopener';
         a.textContent = 'QUICKSTART';
         p.appendChild(a);
-        p.appendChild(document.createTextNode(' en Xcode.'));
+        p.appendChild(document.createTextNode('.'));
         mount.appendChild(p);
       }
     })();
@@ -107,11 +164,11 @@
     sendBtn.addEventListener('click', async () => {
       const prompt = promptEl.value.trim();
       if (!prompt) {
-        statusEl.textContent = 'Escribe una pregunta.';
+        statusEl.textContent = 'Escribe un mensaje.';
         return;
       }
       sendBtn.disabled = true;
-      statusEl.textContent = 'Consultando Gemini…';
+      statusEl.textContent = 'Enviando…';
       replyEl.hidden = true;
       try {
         const res = await fetch('/api/gemini', {
@@ -121,7 +178,7 @@
         });
         const data = await res.json();
         if (!res.ok) {
-          statusEl.textContent = data.error || 'Error en la API';
+          statusEl.textContent = data.error || 'Error';
           replyEl.hidden = true;
           return;
         }
