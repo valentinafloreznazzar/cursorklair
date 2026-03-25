@@ -1,7 +1,7 @@
 {
   "name": "cursor-hackathon",
   "private": true,
-  "description": "Klair iOS app (Klair/) + Vercel landing for the hackathon live URL + /api/gemini demo",
+  "description": "Klair iOS (Klair/) + interactive web demo (same tabs, demo JSON, klairCoach Gemini API) on Vercel",
   "engines": {
     "node": ">=18"
   },

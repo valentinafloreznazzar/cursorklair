@@ -3,200 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Klair — co-pilot de salud para iPhone. Vista estilo simulador iOS; enlace oficial del hackathon.">
-  <title>Klair · App iOS</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Klair — demo web interactiva alineada con la app iOS: mismas pestañas, datos demo y coach Gemini con contexto completo.">
+  <title>Klair · Demo web (jurado)</title>
+  <link rel="stylesheet" href="klair-app.css">
 </head>
-<body>
-  <main>
-    <header class="site-hero">
-      <p class="eyebrow">IE University · Cursor Hackathon · March 2026</p>
-      <h1>Klair</h1>
-      <p class="subtitle">Co-pilot de bio-inteligencia · <strong>SwiftUI</strong> en Xcode</p>
-      <p class="description">
-        La app vive en <code>Klair/</code>. Abajo, una vista tipo <strong>Simulador</strong>: misma jerarquía que en iPhone (título grande, tarjetas, coach).
-      </p>
-    </header>
+<body class="klair-web-body">
+  <p class="page-note">
+    Esto es la <strong>versión web funcional</strong> para el jurado: las mismas <strong>6 pestañas</strong> que en Xcode (Pulse, Fuel, Sleep, Move, Klair, Vault), los mismos <strong>datos de demostración</strong> que el mock de la app, y <strong>Ask Klair</strong> con el mismo contrato de Gemini (contexto JSON + conversación). No es el binario iOS: sin HealthKit, cámara ni SwiftData local.
+  </p>
 
-    <div class="simulator-layout">
-      <figure class="iphone-column" aria-label="Vista previa estilo iPhone Simulator">
-        <div class="iphone-label">iPhone · iOS Simulator</div>
-        <div class="iphone">
-          <div class="iphone-screen">
-            <div class="iphone-screen-inner">
-              <header class="ios-top-hardware">
-                <div class="ios-status-bar">
-                  <span class="ios-time" aria-hidden="true">9:41</span>
-                  <div class="dynamic-island" aria-hidden="true"></div>
-                  <div class="ios-status-trail" aria-hidden="true">
-                    <div class="ios-signal-bars">
-                      <span></span><span></span><span></span><span></span>
-                    </div>
-                    <span class="ios-wifi"></span>
-                    <span class="ios-battery"><span class="ios-battery-level"></span></span>
-                  </div>
-                </div>
-              </header>
-
-              <div class="app-scroll">
-                <div class="app-large-title-block">
-                  <p class="app-section-eyebrow">Hoy</p>
-                  <h2 class="app-large-title">Klair</h2>
-                </div>
-
-                <div class="app-card-grid">
-                  <div class="app-metric-card">
-                    <span class="app-metric-label">Readiness</span>
-                    <span class="app-metric-value">82</span>
-                    <span class="app-metric-unit">mock</span>
-                  </div>
-                  <div class="app-metric-card">
-                    <span class="app-metric-label">Sueño</span>
-                    <span class="app-metric-value">7h 12m</span>
-                    <span class="app-metric-unit">demo</span>
-                  </div>
-                </div>
-
-                <section class="app-grouped" aria-label="Demo coach Ask AI">
-                  <h3 class="app-group-header">Ask Klair</h3>
-                  <div class="app-group-body">
-                    <p class="app-group-footnote">Paralelo al Ask AI de la app · <code>/api/gemini</code></p>
-                    <label class="ios-field-label" for="prompt">Mensaje</label>
-                    <textarea id="prompt" class="ios-text-field" rows="3" placeholder="Ej: Ideas ligeras para cenar…"></textarea>
-                    <button type="button" id="send" class="ios-pill-button">Enviar</button>
-                    <div id="status" class="ios-footnote" aria-live="polite"></div>
-                    <article id="reply" class="ios-bubble-reply" hidden></article>
-                  </div>
-                </section>
-
-                <p class="app-legal-note">Vercel = enlace del hackathon. Binario real: Xcode o TestFlight.</p>
+  <div class="device-stage">
+    <div class="iphone">
+      <div class="iphone-screen">
+        <div class="iphone-screen-inner">
+          <header class="ios-top-hardware">
+            <div class="ios-status-bar">
+              <span class="ios-time" aria-hidden="true">9:41</span>
+              <div class="dynamic-island" aria-hidden="true"></div>
+              <div class="ios-status-trail" aria-hidden="true">
+                <div class="ios-signal-bars"><span></span><span></span><span></span><span></span></div>
+                <span class="ios-wifi"></span>
+                <span class="ios-battery"><span class="ios-battery-level"></span></span>
               </div>
-
-              <nav class="ios-tab-bar" aria-label="Barra de pestañas (decorativa)">
-                <div class="ios-tab ios-tab-active"><span class="ios-tab-icon" aria-hidden="true">◉</span>Inicio</div>
-                <div class="ios-tab"><span class="ios-tab-icon" aria-hidden="true">◇</span>Fuel</div>
-                <div class="ios-tab"><span class="ios-tab-icon" aria-hidden="true">✦</span>Ask</div>
-                <div class="ios-tab"><span class="ios-tab-icon" aria-hidden="true">◎</span>Perfil</div>
-              </nav>
-              <div class="iphone-home-indicator" aria-hidden="true"></div>
             </div>
-          </div>
+          </header>
+
+          <div class="app-tab-views" id="app-tab-views"></div>
+
+          <nav class="klair-tab-bar" id="klair-tab-bar" aria-label="Navegación principal"></nav>
+          <div class="iphone-home-indicator" aria-hidden="true"></div>
         </div>
-      </figure>
-
-      <div class="side-panels">
-        <section class="ios-panel" aria-labelledby="app-heading">
-          <h2 id="app-heading">Probar la app iOS</h2>
-          <ol class="steps">
-            <li><strong>Código:</strong> <code>Klair/</code> → <code>Klair.xcodeproj</code> en Xcode.</li>
-            <li><strong>Guía:</strong> <a href="https://github.com/valentinafloreznazzar/cursorklair/blob/main/Klair/QUICKSTART.md" rel="noopener">QUICKSTART.md</a>.</li>
-            <li><strong>Mock:</strong> datos de muestra por defecto.</li>
-            <li><strong>TestFlight:</strong> <code>testflight-config.js</code> → redeploy.</li>
-          </ol>
-          <p class="cta-row">
-            <a class="btn-secondary" href="https://github.com/valentinafloreznazzar/cursorklair/tree/main/Klair" rel="noopener">Carpeta Klair</a>
-            <a class="btn-secondary ghost" href="https://github.com/valentinafloreznazzar/cursorklair" rel="noopener">Repo</a>
-          </p>
-        </section>
-
-        <section class="ios-panel testflight" aria-labelledby="tf-heading">
-          <h2 id="tf-heading">TestFlight</h2>
-          <div id="testflight-mount" class="testflight-mount"></div>
-        </section>
-
-        <section class="ios-panel muted" aria-labelledby="vercel-heading">
-          <h2 id="vercel-heading">Esta URL</h2>
-          <p class="lede">Cumple el requisito de entrega con sitio en vivo; el marco simula cómo se ve Klair en el Simulador.</p>
-        </section>
       </div>
     </div>
-  </main>
+  </div>
+
+  <div class="below-device">
+    <p>
+      <a href="https://github.com/valentinafloreznazzar/cursorklair" rel="noopener">Repositorio</a>
+      · <a href="https://github.com/valentinafloreznazzar/cursorklair/tree/main/Klair" rel="noopener">Carpeta iOS <code>Klair/</code></a>
+      · <a href="https://github.com/valentinafloreznazzar/cursorklair/blob/main/Klair/QUICKSTART.md" rel="noopener">QUICKSTART</a>
+    </p>
+    <div id="testflight-mount-below"></div>
+  </div>
+
   <script src="testflight-config.js"></script>
-  <script>
-    (function () {
-      const mount = document.getElementById('testflight-mount');
-      if (!mount) return;
-      const raw = (typeof window.KLAIR_TESTFLIGHT_URL === 'string' && window.KLAIR_TESTFLIGHT_URL.trim()) || '';
-      let ok = false;
-      try {
-        const u = new URL(raw);
-        ok = u.protocol === 'https:' && u.hostname === 'testflight.apple.com';
-      } catch (_) {}
-      if (ok) {
-        const p = document.createElement('p');
-        p.className = 'lede';
-        p.textContent = 'Instala TestFlight y abre el enlace en el iPhone.';
-        const row = document.createElement('p');
-        row.className = 'cta-row';
-        const a = document.createElement('a');
-        a.className = 'btn-secondary';
-        a.rel = 'noopener noreferrer';
-        a.target = '_blank';
-        a.href = raw;
-        a.textContent = 'Abrir TestFlight';
-        row.appendChild(a);
-        mount.appendChild(p);
-        mount.appendChild(row);
-      } else {
-        const p = document.createElement('p');
-        p.className = 'lede';
-        p.append(
-          document.createTextNode(
-            'Edita testflight-config.js (window.KLAIR_TESTFLIGHT_URL) y redespliega. Mientras: '
-          )
-        );
-        const a = document.createElement('a');
-        a.href = 'https://github.com/valentinafloreznazzar/cursorklair/blob/main/Klair/QUICKSTART.md';
-        a.rel = 'noopener';
-        a.textContent = 'QUICKSTART';
-        p.appendChild(a);
-        p.appendChild(document.createTextNode('.'));
-        mount.appendChild(p);
-      }
-    })();
-  </script>
-  <script>
-    const promptEl = document.getElementById('prompt');
-    const sendBtn = document.getElementById('send');
-    const statusEl = document.getElementById('status');
-    const replyEl = document.getElementById('reply');
-
-    sendBtn.addEventListener('click', async () => {
-      const prompt = promptEl.value.trim();
-      if (!prompt) {
-        statusEl.textContent = 'Escribe un mensaje.';
-        return;
-      }
-      sendBtn.disabled = true;
-      statusEl.textContent = 'Enviando…';
-      replyEl.hidden = true;
-      try {
-        const res = await fetch('/api/gemini', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ prompt }),
-        });
-        const data = await res.json();
-        if (!res.ok) {
-          statusEl.textContent = data.error || 'Error';
-          replyEl.hidden = true;
-          return;
-        }
-        statusEl.textContent = '';
-        replyEl.innerHTML = '<pre>' + escapeHtml(data.text) + '</pre>';
-        replyEl.hidden = false;
-      } catch (e) {
-        statusEl.textContent = 'Red: ' + (e.message || 'fallo');
-      } finally {
-        sendBtn.disabled = false;
-      }
-    });
-
-    function escapeHtml(s) {
-      const d = document.createElement('div');
-      d.textContent = s;
-      return d.innerHTML;
-    }
-  </script>
+  <script src="klair-app.js"></script>
 </body>
 </html>

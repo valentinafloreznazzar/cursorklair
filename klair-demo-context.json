@@ -1,0 +1,191 @@
+{
+  "user": {
+    "name": "Marta García",
+    "age": 32,
+    "weightKg": 62.5,
+    "heightCm": 168,
+    "bmi": 22.1,
+    "bodyFatPercentage": 24,
+    "waistCm": 72,
+    "hipCm": 98,
+    "waistToHipRatio": 0.73,
+    "dailyCalorieGoal": 1950,
+    "bmr": 1380,
+    "menstruationTrackingEnabled": true,
+    "knownConditions": "PCOS (diagnosed), mild anemia — low ferritin",
+    "healthGoals": "Better sleep, stable energy, iron repletion",
+    "medications": "Metformin 500mg, iron supplement",
+    "cycleDay": 22,
+    "cycleLength": 28,
+    "cyclePhase": "luteal",
+    "bloodPressure": "118/76",
+    "bpCategory": "Normal",
+    "glucoseMgDl": 92,
+    "waterIntakeMl": 1200,
+    "waterGoalMl": 2500,
+    "moodRating": 7,
+    "energyRating": 3
+  },
+  "recentMeals": [
+    {
+      "timestamp": "2026-03-25T08:15:00Z",
+      "mealTitle": "Greek yogurt, berries, oats",
+      "calories": 380,
+      "protein": 22,
+      "carbs": 48,
+      "fat": 12,
+      "fiber": 8,
+      "sugar": 18,
+      "caffeineMg": 0,
+      "alcoholUnits": 0,
+      "glycemicLoad": 14,
+      "notes": "",
+      "micronutrientsJSON": null,
+      "isHighGlycemic": false,
+      "isLateNight": false
+    },
+    {
+      "timestamp": "2026-03-24T22:40:00Z",
+      "mealTitle": "Pasta carbonara",
+      "calories": 720,
+      "protein": 28,
+      "carbs": 78,
+      "fat": 32,
+      "fiber": 3,
+      "sugar": 6,
+      "caffeineMg": 0,
+      "alcoholUnits": 0,
+      "glycemicLoad": 38,
+      "notes": "Late dinner",
+      "micronutrientsJSON": null,
+      "isHighGlycemic": true,
+      "isLateNight": true
+    }
+  ],
+  "recentOura": [
+    {
+      "date": "2026-03-25T06:00:00Z",
+      "readiness": 82,
+      "sleep": 78,
+      "hrv": 42,
+      "remMinutes": 95,
+      "deepMinutes": 68,
+      "lightMinutes": 245,
+      "totalMinutes": 408,
+      "sleepEfficiency": 86,
+      "sleepLatency": 12,
+      "temperatureDeviation": 0.35,
+      "restingHeartRate": 54,
+      "respiratoryRate": 14.2,
+      "spo2": 97,
+      "stressFlag": true,
+      "stressScore": 62,
+      "stressDurationMin": 45,
+      "sleepMidpointDeviation": 0.8
+    }
+  ],
+  "recentActivity": [
+    {
+      "date": "2026-03-25T12:00:00Z",
+      "steps": 8420,
+      "activeCalories": 420,
+      "workoutType": "Pilates",
+      "highIntensityMinutes": 12,
+      "mediumIntensityMinutes": 38,
+      "vo2Max": 38,
+      "trainingLoadAcute": 1.1,
+      "trainingLoadChronic": 0.95,
+      "trainingLoadStatus": "maintaining"
+    }
+  ],
+  "healthKitWorkouts": [
+    {
+      "name": "Pilates",
+      "start": "2026-03-25T17:00:00Z",
+      "durationMinutes": 55,
+      "kcal": 210
+    }
+  ],
+  "healthKitMenstrual": [
+    { "date": "2026-03-24T12:00:00Z", "flow": "Light" }
+  ],
+  "energyActivities": [
+    {
+      "timestamp": "2026-03-25T17:55:00Z",
+      "type": "exercise",
+      "intensity": "medium",
+      "effect": "withdrawal",
+      "context": "Evening Pilates",
+      "energyDelta": -3,
+      "hrvChange": -4.2
+    },
+    {
+      "timestamp": "2026-03-24T09:00:00Z",
+      "type": "social",
+      "intensity": "low",
+      "effect": "deposit",
+      "context": "Walk with coffee",
+      "energyDelta": 4,
+      "hrvChange": 1.1
+    }
+  ],
+  "labResults": [
+    {
+      "date": "2026-03-01T12:00:00Z",
+      "testType": "Ferritin",
+      "value": 18,
+      "unit": "ng/mL",
+      "status": "Low",
+      "notes": "Below optimal for athletes"
+    },
+    {
+      "date": "2026-03-01T12:00:00Z",
+      "testType": "HbA1c",
+      "value": 5.3,
+      "unit": "%",
+      "status": "Normal",
+      "notes": ""
+    }
+  ],
+  "cycleSymptoms": [
+    {
+      "date": "2026-03-25T12:00:00Z",
+      "cycleDay": 22,
+      "phase": "luteal",
+      "pmsSeverity": 4,
+      "topSymptoms": "bloating:moderate, fatigue:mild"
+    }
+  ],
+  "energyBattery": {
+    "selfReportedEnergy1to10": 3,
+    "selfReportedMood1to10": 7,
+    "recentDepositsCount": 4,
+    "recentWithdrawalsCount": 2,
+    "lastDepositSummary": "Walk with coffee (+4)",
+    "lastWithdrawalSummary": "Evening Pilates (-3)"
+  },
+  "healthAlerts": [
+    {
+      "title": "Hydration below target",
+      "message": "Intake ~48% of goal; mild dehydration can reduce HRV.",
+      "severity": "warning"
+    },
+    {
+      "title": "Late glycemic load",
+      "message": "Yesterday's late high-GL meal may overlap with luteal phase insulin sensitivity.",
+      "severity": "info"
+    }
+  ],
+  "correlations": [
+    {
+      "label": "Late meals vs sleep efficiency",
+      "r": -0.41,
+      "description": "Later calories correlate with lower sleep efficiency this week."
+    },
+    {
+      "label": "HRV vs Pilates timing",
+      "r": -0.28,
+      "description": "Evening training modestly associated with lower same-night HRV."
+    }
+  ]
+}
