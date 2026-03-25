@@ -16,6 +16,10 @@ Your flow is simple.
 
 This repo is here to help you move quickly from idea to deployment.
 
+### Klair (this submission — iOS app)
+
+The shipped product is the **native iOS app** in [`Klair/`](./Klair/) (SwiftUI, open `Klair.xcodeproj` in Xcode). The **repository root** hosts a small **Vercel site** that introduces Klair, links to the code and [Klair/QUICKSTART.md](./Klair/QUICKSTART.md), and satisfies the hackathon’s **live URL** requirement, plus a `/api/gemini` demo aligned with the in-app coach. Details: [SUBMISSION.md](./SUBMISSION.md).
+
 ## 2. The Challenge
 
 **Make one person’s hard day easier.**
@@ -72,7 +76,7 @@ Your goal is to create a project that clearly demonstrates your solution and can
 
 ### 6.3 Run locally
 
-The web landing and Gemini API live at the **repository root** (so Vercel needs no subfolder setting):
+The **Vercel-facing site** (landing for the iOS app + Gemini demo API) lives at the **repository root** (no Vercel subfolder):
 
 ```bash
 npm install

@@ -3,26 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Klair · Cursor Hackathon</title>
+  <meta name="description" content="Klair — co-pilot de salud para iPhone. Código en GitHub; esta página es el enlace oficial desplegado del hackathon.">
+  <title>Klair · App iOS</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main>
     <header class="hero">
-      <p class="eyebrow">IE University · March 2026</p>
+      <p class="eyebrow">IE University · Cursor Hackathon · March 2026</p>
       <h1>Klair</h1>
-      <p class="subtitle">Bio-intelligence co-pilot · iOS + Google Gemini</p>
+      <p class="subtitle">Co-pilot de bio-inteligencia para <strong>iPhone</strong> (SwiftUI)</p>
       <p class="description">
-        App nativa con datos de sueño, nutrición, ciclo y laboratorios. Esta página es el despliegue Vercel del reto:
-        el chat de abajo usa la <strong>misma API de Gemini</strong> vía función serverless (<code>/api/gemini</code>).
+        El producto del equipo es la <strong>app nativa</strong>: sueño (Oura), comidas con visión, HealthKit, ciclo y un coach con IA.
+        Este sitio en Vercel es la <strong>página pública del proyecto</strong> y el enlace “deployed” que pide el hackathon; el núcleo está en el repositorio, carpeta <code>Klair/</code>.
       </p>
     </header>
 
+    <section class="ios-panel" aria-labelledby="app-heading">
+      <h2 id="app-heading">Probar la app iOS</h2>
+      <ol class="steps">
+        <li><strong>Código fuente:</strong> clona o abre el repo y entra en <code>Klair/</code> — abre <code>Klair.xcodeproj</code> en Xcode.</li>
+        <li><strong>Guía paso a paso:</strong> <a href="https://github.com/valentinafloreznazzar/cursorklair/blob/main/Klair/QUICKSTART.md" rel="noopener">QUICKSTART.md</a> (simulador o iPhone).</li>
+        <li><strong>Demo sin APIs:</strong> por defecto la app usa datos y respuestas de muestra (<em>mock</em>) para que el flujo se vea al instante.</li>
+        <li><strong>TestFlight:</strong> si publicas un enlace de prueba externa, añádelo en el README del repo o en el formulario del hackathon para el jurado.</li>
+      </ol>
+      <p class="cta-row">
+        <a class="btn-secondary" href="https://github.com/valentinafloreznazzar/cursorklair/tree/main/Klair" rel="noopener">Ver carpeta Klair en GitHub</a>
+        <a class="btn-secondary ghost" href="https://github.com/valentinafloreznazzar/cursorklair" rel="noopener">Repositorio completo</a>
+      </p>
+    </section>
+
+    <section class="ios-panel muted" aria-labelledby="vercel-heading">
+      <h2 id="vercel-heading">Qué es esta URL (Vercel)</h2>
+      <p class="lede">
+        Cumple el requisito de entrega con un sitio en vivo. Abajo tienes un <strong>mini chat</strong> con el mismo backend de Gemini (<code>/api/gemini</code>) que ilustra el tono del coach; la experiencia completa es la app.
+      </p>
+    </section>
+
     <section class="chat-panel" aria-label="Demo chat Gemini">
-      <h2>Pregunta a Klair (demo web)</h2>
-      <p class="hint">Importa este repo en Vercel con la raíz por defecto (sin subcarpeta). Añade <code>GEMINI_API_KEY</code> en Settings → Environment Variables. No la subas al repo.</p>
-      <textarea id="prompt" rows="4" placeholder="Ej: Dame 3 ideas de comida baja en carga glucémica para la fase lútea…"></textarea>
-      <button type="button" id="send" class="btn-primary">Enviar a Gemini</button>
+      <h2>Pregunta al coach (demo web)</h2>
+      <p class="hint">Paralelo ligero al “Ask AI” de la app. Requiere <code>GEMINI_API_KEY</code> en Vercel → Environment Variables.</p>
+      <textarea id="prompt" rows="4" placeholder="Ej: Ideas de cena ligeras después de un día con poco sueño…"></textarea>
+      <button type="button" id="send" class="btn-primary">Enviar</button>
       <div id="status" class="status" aria-live="polite"></div>
       <article id="reply" class="reply" hidden></article>
     </section>

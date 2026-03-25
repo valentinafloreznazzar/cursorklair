@@ -40,4 +40,4 @@ Set `useMockRemoteServices` to **`false`** and configure keys when you want real
 
 ## Hackathon note
 
-The main repo expects a Vercel deploy from the **repository root** (`index.html` + `/api/gemini`); see root [`DEPLOY.md`](../DEPLOY.md).
+The **repository root** is deployed on Vercel as the **public project page** for Klair (iOS-first copy, links to this folder, plus `/api/gemini` as a small web demo). See root [`DEPLOY.md`](../DEPLOY.md) and [`SUBMISSION.md`](../SUBMISSION.md).

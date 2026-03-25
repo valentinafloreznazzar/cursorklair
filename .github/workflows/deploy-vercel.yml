@@ -1,4 +1,4 @@
-# Despliegue a producción en Vercel cuando haces push a `main`.
+# Deploy Klair project page (iOS-focused landing + /api/gemini) to Vercel on push to `main`.
 #
 # Configuración única (GitHub → repo → Settings → Secrets and variables → Actions):
 #   VERCEL_TOKEN      → https://vercel.com/account/tokens

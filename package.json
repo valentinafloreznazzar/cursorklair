@@ -1,7 +1,7 @@
 {
   "name": "cursor-hackathon",
   "private": true,
-  "description": "Landing + Vercel serverless Gemini API (repo root = zero-config Vercel)",
+  "description": "Klair iOS app (Klair/) + Vercel landing for the hackathon live URL + /api/gemini demo",
   "engines": {
     "node": ">=18"
   },

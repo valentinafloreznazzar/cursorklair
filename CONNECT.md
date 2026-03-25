@@ -1,5 +1,7 @@
 # Conectar GitHub + Vercel (hazlo una vez)
 
+Este proyecto entrega **Klair** (app iOS en `Klair/`). **Vercel** publica la página que describe la app y cumple el enlace desplegado del hackathon.
+
 Desde esta máquina **no se puede** hacer push ni deploy sin tu login. Sigue estos pasos en orden.
 
 ## 1. GitHub — subir el código (`git push`)
@@ -37,7 +39,7 @@ En **GitHub** → tu repositorio → **Settings** → **Secrets and variables** 
 - Haz **push a `main`** (o en **Actions** → workflow **Deploy to Vercel** → **Run workflow**).
 - Cuando termine el job, abre el enlace en los **logs** del paso *Deploy to Vercel* (busca `https://` y `.vercel.app`), o entra en [vercel.com](https://vercel.com) → tu proyecto → **Deployments** → dominio **Production**.
 
-Ese `https://….vercel.app` es el que van los jurados.
+Ese `https://….vercel.app` es el enlace del formulario: página del proyecto Klair (app iOS) + demo web.
 
 ## Alternativa sin Actions
 

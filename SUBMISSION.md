@@ -7,7 +7,7 @@
 | Campo (según lo que pida el Google Form) | Qué poner |
 |------------------------------------------|-----------|
 | **Repositorio GitHub** | https://github.com/valentinafloreznazzar/cursorklair — el proyecto iOS está en la carpeta **`Klair/`** (abrir `Klair.xcodeproj` en Xcode). Guía rápida: [Klair/QUICKSTART.md](./Klair/QUICKSTART.md). |
-| **Enlace “deployed” / URL del proyecto** | https://cursor-hackathon-two.vercel.app — cumple el requisito del hackathon de tener algo **en línea** (landing + chat demo con Gemini). **No es la app iOS;** es complemento para quien abra el enlace en el navegador. |
+| **Enlace “deployed” / URL del proyecto** | https://cursor-hackathon-two.vercel.app — **página oficial del proyecto Klair en vivo**: explica la app iOS, enlaza a `Klair/` en GitHub y QUICKSTART, y un chat demo con Gemini. Cumple el requisito del hackathon; la experiencia completa es la app. |
 | **App iOS para el jurado (recomendado)** | Si el formulario tiene notas o campo extra: indica **TestFlight** (enlace público de prueba externa) o un **vídeo corto** (p. ej. Loom/YouTube no listado) mostrando la app. Sin eso, el jurado puede compilar desde el repo siguiendo QUICKSTART (necesitan Mac + Xcode). |
 
 Sustituye la fila de TestFlight/vídeo cuando tengas el enlace real.
@@ -33,9 +33,9 @@ cd cursorklair
 
 ---
 
-## 2. Vercel (link for judges — web demo)
+## 2. Vercel (página del proyecto Klair + enlace del formulario)
 
-The hackathon expects a **live URL**. The repo root already has `index.html`, `api/gemini.js`, and `vercel.json` (no subcarpeta “starter”).
+El hackathon pide una **URL en vivo**. En la **raíz del repo** hay `index.html` (centrada en la app iOS), `api/gemini.js` y `vercel.json` — sin subcarpeta “starter”. Esa URL es la cara pública del mismo proyecto que vive en **`Klair/`**.
 
 ### Opción A — Desde la terminal (URL en ~1 minuto)
 

@@ -1,6 +1,6 @@
 # Deploy en Vercel (sin configurar Root Directory)
 
-El sitio y `api/gemini.js` están en la **raíz del repositorio**. Al importar el repo en [vercel.com](https://vercel.com), deja **Root Directory vacío** (o `.`).
+La **landing** (presenta la app iOS Klair y el chat demo) y `api/gemini.js` están en la **raíz del repositorio**. Al importar el repo en [vercel.com](https://vercel.com), deja **Root Directory vacío** (o `.`).
 
 1. **Importar** el repositorio desde GitHub/GitLab y desplegar con los valores por defecto.
 2. **Environment Variables** (Settings → Environment Variables), para *Production* y *Preview*:
