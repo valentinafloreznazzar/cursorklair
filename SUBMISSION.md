@@ -1,31 +1,32 @@
 # Hackathon submission · Klair
 
+## Listo para el formulario (copiar y pegar)
+
+| Campo | Valor |
+|--------|--------|
+| **Repositorio GitHub** | https://github.com/valentinafloreznazzar/cursorklair |
+| **URL Vercel (jurado / demo web)** | https://cursor-hackathon-two.vercel.app |
+
+La web carga y `/api/gemini` responde con `GEMINI_API_KEY` configurada en Vercel (proyecto **cursor-hackathon** en tu cuenta).
+
+**Opcional:** para que cada `push` a `main` despliegue solo con GitHub Actions, añade en el repo **Settings → Secrets and variables → Actions**: `VERCEL_TOKEN` ([crear token](https://vercel.com/account/tokens)) y `GEMINI_API_KEY`. Si no, puedes seguir desplegando con `npm run deploy` desde tu máquina.
+
+---
+
 ## 1. GitHub repository
 
 This project is meant to live in a **public GitHub repo** so organizers and judges can review the code.
 
-**If you still need to create the repo**
+**Este fork ya está publicado:**
 
-1. On GitHub: **New repository** (empty, no README if you already have one locally).
-2. In this folder on your machine:
+**→ Repo:** https://github.com/valentinafloreznazzar/cursorklair
 
-```bash
-cd /path/to/cursor-hackathon
-git remote remove origin   # only if you need to point to a *new* repo
-git remote add origin https://github.com/<TU_USUARIO>/<NOMBRE_REPO>.git
-git branch -M main
-git push -u origin main
-```
-
-**If the remote is already correct**, only run:
+Si clonas en otra máquina:
 
 ```bash
-git push -u origin main
+git clone https://github.com/valentinafloreznazzar/cursorklair.git
+cd cursorklair
 ```
-
-Fill in your real repo URL for the form:
-
-**→ Repo:** `https://github.com/<TU_USUARIO>/<NOMBRE_REPO>`
 
 ---
 
@@ -54,6 +55,8 @@ npm run deploy
 2. **Root Directory** vacío (raíz del repo).
 3. **Environment Variables** → `GEMINI_API_KEY` (Production y Preview) → **Deploy**.
 4. Copia el dominio que muestra el deploy (p. ej. `https://<proyecto>.vercel.app`).
+
+**Producción actual de este proyecto:** https://cursor-hackathon-two.vercel.app
 
 Más detalle: [DEPLOY.md](./DEPLOY.md).
 
