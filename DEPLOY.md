@@ -20,10 +20,16 @@ npm run dev
 
 Abre **http://127.0.0.1:3000/** y prueba el chat. (`npm run dev` usa un servidor local; para el flujo oficial de Vercel CLI usa `npm run dev:vercel`.)
 
-## Deploy desde CLI
+## Deploy desde CLI (URL de producción en la salida)
+
+Con token (sin login interactivo):
 
 ```bash
-npx vercel
+export VERCEL_TOKEN='…'   # https://vercel.com/account/tokens
+export GEMINI_API_KEY='…'
+npm run deploy
 ```
 
-La primera vez enlaza el proyecto; las variables de entorno siguen gestionándose en el dashboard de Vercel (o con `vercel env add`).
+Al final verás **`Production: https://….vercel.app`**.
+
+O solo `npx vercel` si ya hiciste `vercel login` en esta máquina.

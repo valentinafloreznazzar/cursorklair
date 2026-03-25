@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "node scripts/dev-local.cjs",
     "dev:vercel": "npx --yes vercel@latest dev",
-    "start": "npx --yes serve@14 . -l 3000"
+    "start": "npx --yes serve@14 . -l 3000",
+    "deploy": "bash scripts/vercel-prod.sh"
   }
 }

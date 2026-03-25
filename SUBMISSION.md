@@ -31,20 +31,31 @@ Fill in your real repo URL for the form:
 
 ## 2. Vercel (link for judges — web demo)
 
-The hackathon expects a **live URL**. For this repo, deploy from the **repository root** (not a subfolder): `index.html`, `api/gemini.js`, `vercel.json`.
+The hackathon expects a **live URL**. The repo root already has `index.html`, `api/gemini.js`, and `vercel.json` (no subcarpeta “starter”).
 
-1. [vercel.com](https://vercel.com) → **Add New** → **Project** → import your GitHub repo.
-2. Leave **Root Directory** empty (default = repo root).
-3. **Environment Variables** → add **`GEMINI_API_KEY`** (your Google AI / Gemini key) for Production and Preview.
-4. Deploy.
+### Opción A — Desde la terminal (URL en ~1 minuto)
 
-After the first successful deployment, Vercel shows the production URL. It usually looks like:
+1. Crea un token: [vercel.com/account/tokens](https://vercel.com/account/tokens) → **Create**.
+2. En la carpeta del repo:
 
-**→ Judges’ live link:** `https://<nombre-del-proyecto>.vercel.app`
+```bash
+export VERCEL_TOKEN='pega_el_token'
+export GEMINI_API_KEY='tu_clave_gemini'
+npm run deploy
+```
 
-*(That exact URL appears in Vercel → your project → **Domains** / the deployment summary. Copy it into the Google Form.)*
+3. Al terminar, la CLI imprime **`Production: https://…vercel.app`** — **ese es el enlace definitivo** para el formulario y los jurados.
 
-Local details: see [DEPLOY.md](./DEPLOY.md).
+*(Si no pasaste `GEMINI_API_KEY`, añádela en Vercel → tu proyecto → Settings → Environment Variables y vuelve a desplegar.)*
+
+### Opción B — Desde la web
+
+1. [vercel.com](https://vercel.com) → **Add New** → **Project** → importa el repo de GitHub.
+2. **Root Directory** vacío (raíz del repo).
+3. **Environment Variables** → `GEMINI_API_KEY` (Production y Preview) → **Deploy**.
+4. Copia el dominio que muestra el deploy (p. ej. `https://<proyecto>.vercel.app`).
+
+Más detalle: [DEPLOY.md](./DEPLOY.md).
 
 ---
 
