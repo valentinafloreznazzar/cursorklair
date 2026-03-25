@@ -1,0 +1,13 @@
+{
+  "name": "cursor-hackathon",
+  "private": true,
+  "description": "Landing + Vercel serverless Gemini API (repo root = zero-config Vercel)",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "node scripts/dev-local.cjs",
+    "dev:vercel": "npx --yes vercel@latest dev",
+    "start": "npx --yes serve@14 . -l 3000"
+  }
+}

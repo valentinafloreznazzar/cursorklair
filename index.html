@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Klair · Cursor Hackathon</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header class="hero">
+      <p class="eyebrow">IE University · March 2026</p>
+      <h1>Klair</h1>
+      <p class="subtitle">Bio-intelligence co-pilot · iOS + Google Gemini</p>
+      <p class="description">
+        App nativa con datos de sueño, nutrición, ciclo y laboratorios. Esta página es el despliegue Vercel del reto:
+        el chat de abajo usa la <strong>misma API de Gemini</strong> vía función serverless (<code>/api/gemini</code>).
+      </p>
+    </header>
+
+    <section class="chat-panel" aria-label="Demo chat Gemini">
+      <h2>Pregunta a Klair (demo web)</h2>
+      <p class="hint">Importa este repo en Vercel con la raíz por defecto (sin subcarpeta). Añade <code>GEMINI_API_KEY</code> en Settings → Environment Variables. No la subas al repo.</p>
+      <textarea id="prompt" rows="4" placeholder="Ej: Dame 3 ideas de comida baja en carga glucémica para la fase lútea…"></textarea>
+      <button type="button" id="send" class="btn-primary">Enviar a Gemini</button>
+      <div id="status" class="status" aria-live="polite"></div>
+      <article id="reply" class="reply" hidden></article>
+    </section>
+  </main>
+  <script>
+    const promptEl = document.getElementById('prompt');
+    const sendBtn = document.getElementById('send');
+    const statusEl = document.getElementById('status');
+    const replyEl = document.getElementById('reply');
+
+    sendBtn.addEventListener('click', async () => {
+      const prompt = promptEl.value.trim();
+      if (!prompt) {
+        statusEl.textContent = 'Escribe una pregunta.';
+        return;
+      }
+      sendBtn.disabled = true;
+      statusEl.textContent = 'Consultando Gemini…';
+      replyEl.hidden = true;
+      try {
+        const res = await fetch('/api/gemini', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt }),
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          statusEl.textContent = data.error || 'Error en la API';
+          replyEl.hidden = true;
+          return;
+        }
+        statusEl.textContent = '';
+        replyEl.innerHTML = '<pre>' + escapeHtml(data.text) + '</pre>';
+        replyEl.hidden = false;
+      } catch (e) {
+        statusEl.textContent = 'Red: ' + (e.message || 'fallo');
+      } finally {
+        sendBtn.disabled = false;
+      }
+    });
+
+    function escapeHtml(s) {
+      const d = document.createElement('div');
+      d.textContent = s;
+      return d.innerHTML;
+    }
+  </script>
+</body>
+</html>

@@ -72,18 +72,20 @@ Your goal is to create a project that clearly demonstrates your solution and can
 
 ### 6.3 Run locally
 
-Install dependencies and start the development server:
+The web landing and Gemini API live at the **repository root** (so Vercel needs no subfolder setting):
 
 ```bash
 npm install
 npm run dev
 ```
 
+For the **Gemini chat**, copy [`.env.example`](./.env.example) to `.env.local` and set `GEMINI_API_KEY` (read by `npm run dev`).
+
 ### 6.4 Deploy to Vercel
 
 Your final project must be live on Vercel.
 
-A typical deployment flow looks like this:
+Import this repo and leave **Root Directory** empty (repository root). In **Environment Variables**, add `GEMINI_API_KEY` (and optionally `GEMINI_MODEL`). See [`DEPLOY.md`](./DEPLOY.md).
 
 ```bash
 npx vercel
@@ -94,6 +96,8 @@ You can also connect your GitHub repository directly to Vercel and deploy from t
 Before submitting, make sure the deployment link works, the project loads correctly, and the core functionality is accessible to judges.
 
 ## 7. Submission
+
+**Klair / this fork:** step-by-step GitHub + Vercel URLs for the form are in [SUBMISSION.md](./SUBMISSION.md).
 
 Once your project is deployed, submit it through the Google Form:
 
@@ -126,7 +130,7 @@ This is not only about showing features. It is also about showing your reasoning
 
 1. [Challenge brief and rubric](./CHALLENGE.md)
 2. [Practical tips](./resources/tips.md)
-3. [Starter project](./starter/)
+3. [Starter reference folder](./starter/) (site + API are at repo root)
 
 ## 10. Final Reminder
 

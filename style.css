@@ -1,0 +1,148 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --soft-slate: #4e5e6d;
+  --cyan: #00d4ff;
+  --bg: #f5f3f4;
+  --card: #ffffff;
+  --text: #1a1a2e;
+  --muted: #5a5a7a;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.35rem;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.description {
+  font-size: 0.95rem;
+  color: #444;
+  text-align: left;
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+.chat-panel {
+  background: var(--card);
+  border-radius: 22px;
+  padding: 1.5rem;
+  box-shadow: 0 12px 40px rgba(26, 26, 46, 0.08);
+}
+
+.chat-panel h2 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.hint {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.hint code {
+  font-size: 0.75rem;
+  background: rgba(0, 212, 255, 0.12);
+  padding: 0.15rem 0.4rem;
+  border-radius: 6px;
+}
+
+textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: none;
+  border-radius: 14px;
+  background: rgba(78, 94, 109, 0.08);
+  font: inherit;
+  color: var(--text);
+  resize: vertical;
+  margin-bottom: 0.75rem;
+}
+
+textarea:focus {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 0.9rem 1.25rem;
+  border: none;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: var(--soft-slate);
+  color: #fff;
+}
+
+.btn-primary:hover:not(:disabled) {
+  filter: brightness(1.05);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.status {
+  min-height: 1.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.reply {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 14px;
+  background: rgba(0, 212, 255, 0.06);
+  text-align: left;
+}
+
+.reply pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}

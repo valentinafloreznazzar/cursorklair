@@ -1,0 +1,44 @@
+name: Klair
+options:
+  bundleIdPrefix: com.ieuniversity
+  deploymentTarget:
+    iOS: "18.0"
+  createIntermediateGroups: true
+targets:
+  Klair:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - path: .
+        excludes:
+          - "*.md"
+          - "project.yml"
+          - "*.xcodeproj"
+          - "README.md"
+          - "QUICKSTART.md"
+          - "COMPETITIVE_MATRIX.md"
+          - "Info.plist"
+    info:
+      path: Info.plist
+      properties:
+        CFBundleDisplayName: Klair
+        NSMotionUsageDescription: "Klair uses motion data to create subtle parallax effects in the interface for a premium feel."
+        NSCameraUsageDescription: "Klair uses the camera to estimate your meal so you can log fuel quickly."
+        NSHealthShareUsageDescription: "Klair reads workouts and cycle logs you already store in Health to connect movement and recovery with nutrition."
+        NSPhotoLibraryUsageDescription: "Klair needs photo access when you pick a meal picture from your library."
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+    settings:
+      base:
+        INFOPLIST_KEY_CFBundleDisplayName: Klair
+        PRODUCT_BUNDLE_IDENTIFIER: com.ieuniversity.Klair
+        CODE_SIGN_ENTITLEMENTS: Klair.entitlements
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        TARGETED_DEVICE_FAMILY: "1"
+        SWIFT_VERSION: "5.0"
+        CURRENT_PROJECT_VERSION: "1"
+        MARKETING_VERSION: "1.0"
+    entitlements:
+      path: Klair.entitlements

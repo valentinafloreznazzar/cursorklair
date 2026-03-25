@@ -1,0 +1,516 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		097D9B38F86162342B487236 /* NutritionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D194926D10250A195063C56 /* NutritionViewModel.swift */; };
+		09C05EC1FC349B42839B13A4 /* EnergyActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B464FE9A309EB273E2189CF0 /* EnergyActivity.swift */; };
+		0B5BA41354FE36C730633796 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1DFA0E34F276AC6BB08AA9 /* MockData.swift */; };
+		0C616A3B1A22C582EFBD397B /* WellnessImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE66268CABCF8323523BB6A /* WellnessImage.swift */; };
+		2831CFE47D5D9BA513B81947 /* HealthKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E01516BB220914EB3CBBBC7 /* HealthKitService.swift */; };
+		34FC7AC1BE4C4FEAC0D2178E /* ParticleCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B660DC5F7CDBE70D9C33D /* ParticleCanvas.swift */; };
+		3713D98E363E984BF94B4159 /* NutritionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4B0A0D32783BF99888227D /* NutritionView.swift */; };
+		388A6A03A6727650E8D6A7BA /* GlassCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADDEF65C32413F9199C4A83 /* GlassCard.swift */; };
+		3AC499CAB236BC571622EB9B /* KlairTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B224038C0F0DE49BE99F04 /* KlairTheme.swift */; };
+		3F17371A3780D6637E5B87E5 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037C799634F624892D4F6156 /* ImagePicker.swift */; };
+		3F2D29E58C009A5E35B7BD46 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A582DBC40C161EAA0E6B259 /* ActivityView.swift */; };
+		45BE56E999F66FD917025001 /* AskAIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B7A07071F6357990D43980 /* AskAIView.swift */; };
+		5138E2F8B18D4B824BE01DF2 /* AskAIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F59AE2A3B53F6A3252132B /* AskAIViewModel.swift */; };
+		599E41CF64F62A069643EC1C /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302F952892F2BECD47F174E2 /* OnboardingView.swift */; };
+		5A9A9213A8CDA8171EB7409F /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21744A32C23A740B4742CC4 /* SplashView.swift */; };
+		72D9329330BDE0007282A8BA /* SensoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CFDB1D72EF62BCF61CC648 /* SensoryManager.swift */; };
+		75628EFA43399E9AE317B666 /* SleepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA266237EA595FCB819B76D0 /* SleepView.swift */; };
+		75E653CFBC3ACE9778E76CB8 /* LabResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD95DFE6736D7A5BB744023 /* LabResult.swift */; };
+		771620A6197C522A6B9300F7 /* ChefRecipesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E22F0286B099FB3BC88184E /* ChefRecipesService.swift */; };
+		795B8A83B501508776C5F0E1 /* ScoreRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449DE1B8447F18D46AE0B39B /* ScoreRing.swift */; };
+		7F9CBD003506E6626451179B /* OuraAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4A3E82BDA24E7F4B0B577F /* OuraAPIService.swift */; };
+		800DC0085017719EABD70B72 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D9A88C61B151493D819786 /* DashboardViewModel.swift */; };
+		87442A1387A0FD42BE50B20B /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BDEC5F290CF62BDF2B5C57 /* UserProfile.swift */; };
+		978AAB05ED2F96D1CDA6F0AA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = "TEMP_C1817164-CF3E-47D3-AD29-480B7C72F4CC" /* ContentView.swift */; };
+		98A9406DD4D0091967DA81BC /* BioProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3AE77438E7683A8851CDE /* BioProfileView.swift */; };
+		A477FE32A193246101342FD4 /* CycleSymptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2407D057324A359C8B6AA114 /* CycleSymptom.swift */; };
+		A5A6373BC2906AAB4076E576 /* DemoMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CCAABB75F5C6CB2F4F5AC8 /* DemoMode.swift */; };
+		A69DC369298F9A740F74E20B /* OuraActivityDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07012A984ACD047B0C5B4FBE /* OuraActivityDay.swift */; };
+		AE59B0F02FE1252C09D76675 /* AlertEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE4620F8690D8BEAF980B40 /* AlertEngine.swift */; };
+		B4B6232831E2C6D582148826 /* CorrelationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AA85F571EC0802609A6A9A /* CorrelationEngine.swift */; };
+		B5A5C6A86D867C8755A5464A /* MealEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862D643B8564DC53DBC8CA5C /* MealEntry.swift */; };
+		B9D4C4F7123B6E2892302D0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = "TEMP_B0547B06-9EE9-4662-B3A7-899EEAD82DD8" /* Assets.xcassets */; };
+		BBA9B992AD29270AE77D61A8 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1E5BAB101B0515250E3D26 /* DashboardView.swift */; };
+		C0A47C3A791A9B19FF62BBBE /* ParallaxModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D51FE960618E49B770D459 /* ParallaxModifier.swift */; };
+		D2E8DAF6E78E8401E0F35A89 /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622924B8FBEBE4A16B1D1325 /* OpenAIService.swift */; };
+		DF768CC1146A2A8535A2B843 /* OuraMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C36A5AA2A23674079C6FE00 /* OuraMetrics.swift */; };
+		F7180A58696F75385627046F /* KlairTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D431909854015811AAAAADD /* KlairTabBar.swift */; };
+		FEAC34830FE4DFEC53ECBFFA /* KlairApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = "TEMP_2A57C592-0379-4EAE-90F7-E6CEE7836B10" /* KlairApp.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		037C799634F624892D4F6156 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		07012A984ACD047B0C5B4FBE /* OuraActivityDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OuraActivityDay.swift; sourceTree = "<group>"; };
+		09D9A88C61B151493D819786 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		1D431909854015811AAAAADD /* KlairTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlairTabBar.swift; sourceTree = "<group>"; };
+		2407D057324A359C8B6AA114 /* CycleSymptom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleSymptom.swift; sourceTree = "<group>"; };
+		302F952892F2BECD47F174E2 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		31B224038C0F0DE49BE99F04 /* KlairTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlairTheme.swift; sourceTree = "<group>"; };
+		36B7A07071F6357990D43980 /* AskAIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskAIView.swift; sourceTree = "<group>"; };
+		39CCAABB75F5C6CB2F4F5AC8 /* DemoMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoMode.swift; sourceTree = "<group>"; };
+		3C1E5BAB101B0515250E3D26 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		3E01516BB220914EB3CBBBC7 /* HealthKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitService.swift; sourceTree = "<group>"; };
+		41D3AE77438E7683A8851CDE /* BioProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioProfileView.swift; sourceTree = "<group>"; };
+		449DE1B8447F18D46AE0B39B /* ScoreRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreRing.swift; sourceTree = "<group>"; };
+		4B6B660DC5F7CDBE70D9C33D /* ParticleCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleCanvas.swift; sourceTree = "<group>"; };
+		4D194926D10250A195063C56 /* NutritionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionViewModel.swift; sourceTree = "<group>"; };
+		5C36A5AA2A23674079C6FE00 /* OuraMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OuraMetrics.swift; sourceTree = "<group>"; };
+		5E4A3E82BDA24E7F4B0B577F /* OuraAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OuraAPIService.swift; sourceTree = "<group>"; };
+		622924B8FBEBE4A16B1D1325 /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
+		6A582DBC40C161EAA0E6B259 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		854A1148CBE0FE0EAC281DFC /* Klair.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Klair.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		862D643B8564DC53DBC8CA5C /* MealEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealEntry.swift; sourceTree = "<group>"; };
+		8E1DFA0E34F276AC6BB08AA9 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		97F59AE2A3B53F6A3252132B /* AskAIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskAIViewModel.swift; sourceTree = "<group>"; };
+		9A4B0A0D32783BF99888227D /* NutritionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionView.swift; sourceTree = "<group>"; };
+		9E22F0286B099FB3BC88184E /* ChefRecipesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefRecipesService.swift; sourceTree = "<group>"; };
+		A21744A32C23A740B4742CC4 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		ABE66268CABCF8323523BB6A /* WellnessImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellnessImage.swift; sourceTree = "<group>"; };
+		B464FE9A309EB273E2189CF0 /* EnergyActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyActivity.swift; sourceTree = "<group>"; };
+		B5CFDB1D72EF62BCF61CC648 /* SensoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensoryManager.swift; sourceTree = "<group>"; };
+		C7AA85F571EC0802609A6A9A /* CorrelationEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrelationEngine.swift; sourceTree = "<group>"; };
+		D1D51FE960618E49B770D459 /* ParallaxModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallaxModifier.swift; sourceTree = "<group>"; };
+		D3BDEC5F290CF62BDF2B5C57 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		DA266237EA595FCB819B76D0 /* SleepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepView.swift; sourceTree = "<group>"; };
+		DADDEF65C32413F9199C4A83 /* GlassCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassCard.swift; sourceTree = "<group>"; };
+		EAE4620F8690D8BEAF980B40 /* AlertEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertEngine.swift; sourceTree = "<group>"; };
+		FFD95DFE6736D7A5BB744023 /* LabResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabResult.swift; sourceTree = "<group>"; };
+		"TEMP_2A57C592-0379-4EAE-90F7-E6CEE7836B10" /* KlairApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlairApp.swift; sourceTree = "<group>"; };
+		"TEMP_B0547B06-9EE9-4662-B3A7-899EEAD82DD8" /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		"TEMP_C059FEA4-51DD-458B-BE08-53B37079105C" /* Klair.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Klair.entitlements; sourceTree = "<group>"; };
+		"TEMP_C1817164-CF3E-47D3-AD29-480B7C72F4CC" /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		38D524BDE195187AC7900E21 = {
+			isa = PBXGroup;
+			children = (
+				43943646573396B55EB5A97D /* Config */,
+				C97BD3807D52759846C976A0 /* MockData */,
+				406FED03887EC4D5F129BA64 /* Models */,
+				5942B669860E5ECF3E9B21E4 /* Services */,
+				B129357B6EE7DF6525DF7ECA /* Utilities */,
+				423F0961098566E72CCE2E6D /* ViewModels */,
+				C5F1D75FEE41F050172CA659 /* Views */,
+				ACAE615124013B1D668FD470 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		406FED03887EC4D5F129BA64 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2407D057324A359C8B6AA114 /* CycleSymptom.swift */,
+				B464FE9A309EB273E2189CF0 /* EnergyActivity.swift */,
+				FFD95DFE6736D7A5BB744023 /* LabResult.swift */,
+				862D643B8564DC53DBC8CA5C /* MealEntry.swift */,
+				07012A984ACD047B0C5B4FBE /* OuraActivityDay.swift */,
+				5C36A5AA2A23674079C6FE00 /* OuraMetrics.swift */,
+				D3BDEC5F290CF62BDF2B5C57 /* UserProfile.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		423F0961098566E72CCE2E6D /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				97F59AE2A3B53F6A3252132B /* AskAIViewModel.swift */,
+				09D9A88C61B151493D819786 /* DashboardViewModel.swift */,
+				4D194926D10250A195063C56 /* NutritionViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		43943646573396B55EB5A97D /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				39CCAABB75F5C6CB2F4F5AC8 /* DemoMode.swift */,
+				31B224038C0F0DE49BE99F04 /* KlairTheme.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		5942B669860E5ECF3E9B21E4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				EAE4620F8690D8BEAF980B40 /* AlertEngine.swift */,
+				9E22F0286B099FB3BC88184E /* ChefRecipesService.swift */,
+				C7AA85F571EC0802609A6A9A /* CorrelationEngine.swift */,
+				3E01516BB220914EB3CBBBC7 /* HealthKitService.swift */,
+				622924B8FBEBE4A16B1D1325 /* OpenAIService.swift */,
+				5E4A3E82BDA24E7F4B0B577F /* OuraAPIService.swift */,
+				B5CFDB1D72EF62BCF61CC648 /* SensoryManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		ACAE615124013B1D668FD470 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				854A1148CBE0FE0EAC281DFC /* Klair.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B129357B6EE7DF6525DF7ECA /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				037C799634F624892D4F6156 /* ImagePicker.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		C5F1D75FEE41F050172CA659 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6A582DBC40C161EAA0E6B259 /* ActivityView.swift */,
+				36B7A07071F6357990D43980 /* AskAIView.swift */,
+				41D3AE77438E7683A8851CDE /* BioProfileView.swift */,
+				3C1E5BAB101B0515250E3D26 /* DashboardView.swift */,
+				DADDEF65C32413F9199C4A83 /* GlassCard.swift */,
+				1D431909854015811AAAAADD /* KlairTabBar.swift */,
+				9A4B0A0D32783BF99888227D /* NutritionView.swift */,
+				302F952892F2BECD47F174E2 /* OnboardingView.swift */,
+				D1D51FE960618E49B770D459 /* ParallaxModifier.swift */,
+				4B6B660DC5F7CDBE70D9C33D /* ParticleCanvas.swift */,
+				449DE1B8447F18D46AE0B39B /* ScoreRing.swift */,
+				DA266237EA595FCB819B76D0 /* SleepView.swift */,
+				A21744A32C23A740B4742CC4 /* SplashView.swift */,
+				ABE66268CABCF8323523BB6A /* WellnessImage.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C97BD3807D52759846C976A0 /* MockData */ = {
+			isa = PBXGroup;
+			children = (
+				8E1DFA0E34F276AC6BB08AA9 /* MockData.swift */,
+			);
+			path = MockData;
+			sourceTree = "<group>";
+		};
+		"TEMP_1A89E732-E23B-4964-832E-EF5212716439" /* . */ = {
+			isa = PBXGroup;
+			children = (
+				"TEMP_2A57C592-0379-4EAE-90F7-E6CEE7836B10" /* KlairApp.swift */,
+				"TEMP_C059FEA4-51DD-458B-BE08-53B37079105C" /* Klair.entitlements */,
+				"TEMP_B0547B06-9EE9-4662-B3A7-899EEAD82DD8" /* Assets.xcassets */,
+				"TEMP_C1817164-CF3E-47D3-AD29-480B7C72F4CC" /* ContentView.swift */,
+				423F0961098566E72CCE2E6D /* ViewModels */,
+				C97BD3807D52759846C976A0 /* MockData */,
+				43943646573396B55EB5A97D /* Config */,
+				406FED03887EC4D5F129BA64 /* Models */,
+				B129357B6EE7DF6525DF7ECA /* Utilities */,
+				C5F1D75FEE41F050172CA659 /* Views */,
+				5942B669860E5ECF3E9B21E4 /* Services */,
+			);
+			name = .;
+			path = .;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2DE503C261BB05B7716899CD /* Klair */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 149FEB65143D512E8FA9AFF9 /* Build configuration list for PBXNativeTarget "Klair" */;
+			buildPhases = (
+				327FADE8EB3C4F20437C66AE /* Sources */,
+				3A338ED58499D70025F33818 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Klair;
+			packageProductDependencies = (
+			);
+			productName = Klair;
+			productReference = 854A1148CBE0FE0EAC281DFC /* Klair.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E0BB834213DB1967DDAD3612 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = E74999F05AC9B18E267FE36D /* Build configuration list for PBXProject "Klair" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 38D524BDE195187AC7900E21;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = ACAE615124013B1D668FD470 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2DE503C261BB05B7716899CD /* Klair */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3A338ED58499D70025F33818 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9D4C4F7123B6E2892302D0A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		327FADE8EB3C4F20437C66AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F2D29E58C009A5E35B7BD46 /* ActivityView.swift in Sources */,
+				AE59B0F02FE1252C09D76675 /* AlertEngine.swift in Sources */,
+				45BE56E999F66FD917025001 /* AskAIView.swift in Sources */,
+				5138E2F8B18D4B824BE01DF2 /* AskAIViewModel.swift in Sources */,
+				98A9406DD4D0091967DA81BC /* BioProfileView.swift in Sources */,
+				771620A6197C522A6B9300F7 /* ChefRecipesService.swift in Sources */,
+				978AAB05ED2F96D1CDA6F0AA /* ContentView.swift in Sources */,
+				B4B6232831E2C6D582148826 /* CorrelationEngine.swift in Sources */,
+				A477FE32A193246101342FD4 /* CycleSymptom.swift in Sources */,
+				BBA9B992AD29270AE77D61A8 /* DashboardView.swift in Sources */,
+				800DC0085017719EABD70B72 /* DashboardViewModel.swift in Sources */,
+				A5A6373BC2906AAB4076E576 /* DemoMode.swift in Sources */,
+				09C05EC1FC349B42839B13A4 /* EnergyActivity.swift in Sources */,
+				388A6A03A6727650E8D6A7BA /* GlassCard.swift in Sources */,
+				2831CFE47D5D9BA513B81947 /* HealthKitService.swift in Sources */,
+				3F17371A3780D6637E5B87E5 /* ImagePicker.swift in Sources */,
+				FEAC34830FE4DFEC53ECBFFA /* KlairApp.swift in Sources */,
+				F7180A58696F75385627046F /* KlairTabBar.swift in Sources */,
+				3AC499CAB236BC571622EB9B /* KlairTheme.swift in Sources */,
+				75E653CFBC3ACE9778E76CB8 /* LabResult.swift in Sources */,
+				B5A5C6A86D867C8755A5464A /* MealEntry.swift in Sources */,
+				0B5BA41354FE36C730633796 /* MockData.swift in Sources */,
+				3713D98E363E984BF94B4159 /* NutritionView.swift in Sources */,
+				097D9B38F86162342B487236 /* NutritionViewModel.swift in Sources */,
+				599E41CF64F62A069643EC1C /* OnboardingView.swift in Sources */,
+				D2E8DAF6E78E8401E0F35A89 /* OpenAIService.swift in Sources */,
+				7F9CBD003506E6626451179B /* OuraAPIService.swift in Sources */,
+				A69DC369298F9A740F74E20B /* OuraActivityDay.swift in Sources */,
+				DF768CC1146A2A8535A2B843 /* OuraMetrics.swift in Sources */,
+				C0A47C3A791A9B19FF62BBBE /* ParallaxModifier.swift in Sources */,
+				34FC7AC1BE4C4FEAC0D2178E /* ParticleCanvas.swift in Sources */,
+				795B8A83B501508776C5F0E1 /* ScoreRing.swift in Sources */,
+				72D9329330BDE0007282A8BA /* SensoryManager.swift in Sources */,
+				75628EFA43399E9AE317B666 /* SleepView.swift in Sources */,
+				5A9A9213A8CDA8171EB7409F /* SplashView.swift in Sources */,
+				87442A1387A0FD42BE50B20B /* UserProfile.swift in Sources */,
+				0C616A3B1A22C582EFBD397B /* WellnessImage.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0A5E9DF8DE3C5DF486C68736 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Klair.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Klair;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ieuniversity.Klair;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		116276192424EEFADDF7E1F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		A9FEC7FC7C9B67705C1235D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Klair.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Klair;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ieuniversity.Klair;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		D4812D61D85F21FC8CBB1C1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		149FEB65143D512E8FA9AFF9 /* Build configuration list for PBXNativeTarget "Klair" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A5E9DF8DE3C5DF486C68736 /* Debug */,
+				A9FEC7FC7C9B67705C1235D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E74999F05AC9B18E267FE36D /* Build configuration list for PBXProject "Klair" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4812D61D85F21FC8CBB1C1E /* Debug */,
+				116276192424EEFADDF7E1F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E0BB834213DB1967DDAD3612 /* Project object */;
+}

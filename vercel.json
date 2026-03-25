@@ -1,0 +1,9 @@
+{
+  "outputDirectory": ".",
+  "functions": {
+    "api/gemini.js": {
+      "memory": 256,
+      "maxDuration": 30
+    }
+  }
+}

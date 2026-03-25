@@ -24,7 +24,7 @@ One thing that works completely beats five things that almost work. Ask yourself
 
 **Deploy to Vercel early — don't leave it to the last hour.**
 
-The starter folder in this repo is a zero-config Vercel deploy. Fork the repo, import to [vercel.com](https://vercel.com), set root directory to `starter/`, deploy.
+The web app and serverless Gemini route live at the **repository root** for a zero-config Vercel deploy. Fork the repo, import to [vercel.com](https://vercel.com), leave root directory as default, add `GEMINI_API_KEY`, deploy.
 
 **Judges will open your URL.** If it's not live, your project doesn't exist.
 
@@ -43,6 +43,6 @@ The starter folder in this repo is a zero-config Vercel deploy. Fork the repo, i
 
 ## Starter Project
 
-The `starter/` folder in this repo is a minimal HTML/CSS site with zero dependencies, ready to deploy on Vercel.
+The hackathon includes a minimal HTML/CSS landing at the repo root (see `index.html`) plus `/api/gemini`. The [`starter/`](../starter/) folder is a short pointer to that layout.
 
 It's a foundation, not a constraint. You can replace it entirely, build on top of it, or ignore it and use whatever stack you prefer.
