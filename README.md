@@ -99,6 +99,8 @@ Before submitting, make sure the deployment link works, the project loads correc
 
 **Klair / this fork:** step-by-step GitHub + Vercel URLs for the form are in [SUBMISSION.md](./SUBMISSION.md).
 
+**Si el push o el deploy fallan desde la terminal:** sigue [CONNECT.md](./CONNECT.md) (`gh auth login`, secrets en GitHub, workflow **Deploy to Vercel**).
+
 Once your project is deployed, submit it through the Google Form:
 
 **[Submit here](https://forms.gle/dS1H98eJoZwsXj7e7).**

@@ -1,0 +1,43 @@
+# Despliegue a producción en Vercel cuando haces push a `main`.
+#
+# Configuración única (GitHub → repo → Settings → Secrets and variables → Actions):
+#   VERCEL_TOKEN      → https://vercel.com/account/tokens
+#   GEMINI_API_KEY    → misma clave que usas en Google AI / Gemini
+#
+# Opcional la primera vez: crea un proyecto vacío en vercel.com y enlázalo, o deja
+# que la CLI cree uno en el primer deploy local con `npm run deploy`.
+
+name: Deploy to Vercel
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy to Vercel (production)
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          set -e
+          if [ -z "$VERCEL_TOKEN" ]; then
+            echo "::error::Falta el secret VERCEL_TOKEN en GitHub (Settings → Secrets → Actions)."
+            exit 1
+          fi
+          ARGS=(deploy --prod --yes --token "$VERCEL_TOKEN")
+          if [ -n "$GEMINI_API_KEY" ]; then
+            ARGS+=(-e "GEMINI_API_KEY=$GEMINI_API_KEY")
+          else
+            echo "::warning::GEMINI_API_KEY no está en secrets; añádela o configura la variable en el dashboard de Vercel."
+          fi
+          npx --yes vercel@latest "${ARGS[@]}" .
