@@ -1,5 +1,7 @@
 # Entregar Klair al jurado (app iOS completa)
 
+**¿Sin pagar Apple Developer?** Opciones reales (Mac, web, vídeo): [JUDGES-GRATIS.md](./JUDGES-GRATIS.md).
+
 La forma **más fácil y estándar** de que alguien con **iPhone** pruebe la app **sin Xcode** es **TestFlight** (Apple). No hay otra plataforma que instale una app nativa iOS de forma tan simple para muchas personas: un enlace + app TestFlight (gratis en el App Store).
 
 ## Requisitos (una vez)

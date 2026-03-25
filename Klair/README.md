@@ -2,8 +2,8 @@
 
 SwiftUI + SwiftData health co-pilot: Oura summaries, meal logging with GPT-4o vision, HealthKit (workouts + cycle logs), and a Klair coach chat.
 
-**For judges on iPhone:** ask the team for their **TestFlight** link — that’s the full app without Xcode. Team setup: **[TESTFLIGHT-JUDGES.md](./TESTFLIGHT-JUDGES.md)**.  
-**For Mac + Simulator:** you only need **Xcode** (Mac App Store). Follow **[QUICKSTART.md](./QUICKSTART.md)**.
+**For judges on iPhone:** **TestFlight** link if the team has a paid Apple Developer account — **[TESTFLIGHT-JUDGES.md](./TESTFLIGHT-JUDGES.md)**.  
+**Free path (no paid Apple account):** **[JUDGES-GRATIS.md](./JUDGES-GRATIS.md)** — usually **Mac + Xcode + Simulator** via **[QUICKSTART.md](./QUICKSTART.md)**, or the team’s **web demo** / a **video**.
 
 ## Demo / mock mode (default)
 
