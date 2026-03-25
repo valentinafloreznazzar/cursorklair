@@ -18,7 +18,7 @@ This repo is here to help you move quickly from idea to deployment.
 
 ### Klair (this submission — iOS app)
 
-The shipped product is the **native iOS app** in [`Klair/`](./Klair/) (SwiftUI, open `Klair.xcodeproj` in Xcode). The **repository root** hosts a small **Vercel site** that introduces Klair, links to the code and [Klair/QUICKSTART.md](./Klair/QUICKSTART.md), and satisfies the hackathon’s **live URL** requirement, plus a `/api/gemini` demo aligned with the in-app coach. Details: [SUBMISSION.md](./SUBMISSION.md).
+The shipped product is the **native iOS app** in [`Klair/`](./Klair/) (SwiftUI, open `Klair.xcodeproj` in Xcode). The **repository root** hosts an **interactive web demo on Vercel** for judges: the same **six tabs** as the app (Pulse, Fuel, Sleep, Move, Klair, Vault), demo data in [`klair-demo-context.json`](./klair-demo-context.json), and **Ask Klair** using the same **Gemini coach contract** as iOS (`klairAgentReply` via `POST /api/gemini` with `mode: "klairCoach"`). Native-only features (HealthKit, camera meal scan, SwiftData persistence) remain in the iOS build. Details: [SUBMISSION.md](./SUBMISSION.md).
 
 ## 2. The Challenge
 
