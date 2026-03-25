@@ -8,7 +8,7 @@
 |------------------------------------------|-----------|
 | **Repositorio GitHub** | https://github.com/valentinafloreznazzar/cursorklair — el proyecto iOS está en la carpeta **`Klair/`** (abrir `Klair.xcodeproj` en Xcode). Guía rápida: [Klair/QUICKSTART.md](./Klair/QUICKSTART.md). |
 | **Enlace “deployed” / URL del proyecto** | https://cursor-hackathon-two.vercel.app — **demo web interactiva para el jurado**: las **6 pestañas** como en la app iOS (Pulse, Fuel, Sleep, Move, Klair, Vault), datos demo en `klair-demo-context.json`, y **Ask Klair** con el mismo **modo coach** que iOS (`klairAgentReply`: contexto JSON + conversación vía `POST /api/gemini` con `mode: "klairCoach"`). La app nativa sigue en `Klair/` (HealthKit, cámara, SwiftData). |
-| **App iOS para el jurado (recomendado)** | **TestFlight:** pega el enlace en `testflight-config.js` (`window.KLAIR_TESTFLIGHT_URL`) y redespliega Vercel — el botón aparece en la landing. Copia la misma URL en el formulario si hay campo libre. Alternativa: **vídeo** (Loom/YouTube) o compilar con [QUICKSTART](./Klair/QUICKSTART.md). |
+| **App iOS para el jurado (recomendado)** | **TestFlight** es la forma más fácil de que prueben la app **completa** en iPhone: guía paso a paso en [Klair/TESTFLIGHT-JUDGES.md](./Klair/TESTFLIGHT-JUDGES.md). Cuando tengas el enlace público (`https://testflight.apple.com/join/…`), pégalo en `testflight-config.js`, haz push y deploy en Vercel para el botón en la landing, y repite la URL en el formulario. Sin cuenta de desarrollador de pago: [QUICKSTART](./Klair/QUICKSTART.md) (Mac) o vídeo demo. |
 
 Cuando tengas el enlace de Apple, actualiza `testflight-config.js` y vuelve a hacer `git push` + deploy (o Actions si configuraste secretos).
 

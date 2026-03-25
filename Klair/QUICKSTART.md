@@ -1,10 +1,17 @@
 # Run Klair (non-technical steps)
 
-## What you’re “installing”
+## Judges on a real iPhone (easiest)
 
-There is **nothing to download from the App Store**. **Klair** is this iPhone app project inside the `Klair` folder. You open it in **Xcode** (Apple’s free app for developers) and press **Run**. Xcode then **installs Klair on the Simulator** (a fake iPhone on your Mac) or on your real iPhone if you plug it in.
+If the team shared a **TestFlight link**, install Apple’s **TestFlight** app from the App Store, open the link in Safari, and install **Klair** — that’s the full native app. See the team’s Vercel page or submission form for the link.  
+**How to publish that link (developers):** [TESTFLIGHT-JUDGES.md](./TESTFLIGHT-JUDGES.md).
 
-You do **not** need to install Cursor or anything else to try Klair—only **Xcode**.
+---
+
+## What you’re “installing” (Mac + Xcode path)
+
+There is **no App Store listing** for this hackathon build unless the team used TestFlight. Without TestFlight, **Klair** is the project inside the `Klair` folder: you open it in **Xcode** and press **Run**. Xcode then **installs Klair on the Simulator** (a fake iPhone on your Mac) or on your real iPhone if you plug it in.
+
+You do **not** need to install Cursor or anything else to try Klair this way—only **Xcode** (and a Mac).
 
 ---
 

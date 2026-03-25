@@ -2,7 +2,8 @@
 
 SwiftUI + SwiftData health co-pilot: Oura summaries, meal logging with GPT-4o vision, HealthKit (workouts + cycle logs), and a Klair coach chat.
 
-**Not sure what to install?** You only need **Xcode** on a Mac (from the Mac App Store). There is no App Store app called “Klair” for this hackathon build. Follow **[QUICKSTART.md](./QUICKSTART.md)** step by step.
+**For judges on iPhone:** ask the team for their **TestFlight** link — that’s the full app without Xcode. Team setup: **[TESTFLIGHT-JUDGES.md](./TESTFLIGHT-JUDGES.md)**.  
+**For Mac + Simulator:** you only need **Xcode** (Mac App Store). Follow **[QUICKSTART.md](./QUICKSTART.md)**.
 
 ## Demo / mock mode (default)
 
