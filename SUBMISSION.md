@@ -2,14 +2,17 @@
 
 ## Listo para el formulario (copiar y pegar)
 
-| Campo | Valor |
-|--------|--------|
-| **Repositorio GitHub** | https://github.com/valentinafloreznazzar/cursorklair |
-| **URL Vercel (jurado / demo web)** | https://cursor-hackathon-two.vercel.app |
+**Tu solución principal es la app iOS (Klair).** El jurado puede revisar el código en GitHub y, si les das un enlace o instrucciones, instalarla o verla en vivo.
 
-La web carga y `/api/gemini` responde con `GEMINI_API_KEY` configurada en Vercel (proyecto **cursor-hackathon** en tu cuenta).
+| Campo (según lo que pida el Google Form) | Qué poner |
+|------------------------------------------|-----------|
+| **Repositorio GitHub** | https://github.com/valentinafloreznazzar/cursorklair — el proyecto iOS está en la carpeta **`Klair/`** (abrir `Klair.xcodeproj` en Xcode). Guía rápida: [Klair/QUICKSTART.md](./Klair/QUICKSTART.md). |
+| **Enlace “deployed” / URL del proyecto** | https://cursor-hackathon-two.vercel.app — cumple el requisito del hackathon de tener algo **en línea** (landing + chat demo con Gemini). **No es la app iOS;** es complemento para quien abra el enlace en el navegador. |
+| **App iOS para el jurado (recomendado)** | Si el formulario tiene notas o campo extra: indica **TestFlight** (enlace público de prueba externa) o un **vídeo corto** (p. ej. Loom/YouTube no listado) mostrando la app. Sin eso, el jurado puede compilar desde el repo siguiendo QUICKSTART (necesitan Mac + Xcode). |
 
-**Opcional:** para que cada `push` a `main` despliegue solo con GitHub Actions, añade en el repo **Settings → Secrets and variables → Actions**: `VERCEL_TOKEN` ([crear token](https://vercel.com/account/tokens)) y `GEMINI_API_KEY`. Si no, puedes seguir desplegando con `npm run deploy` desde tu máquina.
+Sustituye la fila de TestFlight/vídeo cuando tengas el enlace real.
+
+**Opcional (GitHub Actions → Vercel):** en **Settings → Secrets → Actions** añade `VERCEL_TOKEN` y `GEMINI_API_KEY` si quieres deploy automático en cada push; si no, `npm run deploy` desde tu máquina sigue valiendo.
 
 ---
 
@@ -62,8 +65,14 @@ Más detalle: [DEPLOY.md](./DEPLOY.md).
 
 ---
 
-## 3. iOS app (Klair)
+## 3. iOS app (Klair) — lo que realmente entregas
 
-The native app is in **`Klair/`** (open `Klair.xcodeproj` in Xcode). It is **not** hosted on Vercel; judges mainly use the **Vercel URL** for the live demo unless you share TestFlight or a video separately.
+La app nativa vive en **`Klair/`**. **Vercel no sirve para “instalar” la app iOS**; solo sirve para el enlace web que muchos formularios exigen.
 
-To run Klair on device/simulator, set **`GEMINI_API_KEY`** in the Xcode scheme environment variables.
+**Cómo puede probarla el jurado (elige al menos una vía):**
+
+1. **TestFlight (mejor para iPhone real):** en App Store Connect sube un build, activa **External Testing** (o Internal) y copia el **enlace público de invitación**. Pégalo en el formulario o en el README del repo.
+2. **Código + Xcode:** con el repo público, quien tenga Mac puede seguir [Klair/QUICKSTART.md](./Klair/QUICKSTART.md), firmar con su equipo y ejecutar en simulador o dispositivo.
+3. **Vídeo demo:** si no hay TestFlight a tiempo, un enlace a un vídeo de 1–2 min mostrando flujos clave (dashboard, comida, Ask AI) ayuda mucho al jurado.
+
+**Claves en Xcode (modo real, no mock):** en el scheme de Klair, variables de entorno **`GEMINI_API_KEY`** (y las que uses de OpenAI/Oura según [Klair/README.md](./Klair/README.md)). Con **`DemoMode.useMockRemoteServices = true`** (por defecto) la app funciona sin APIs para una demo rápida.
