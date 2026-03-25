@@ -8,9 +8,9 @@
 |------------------------------------------|-----------|
 | **Repositorio GitHub** | https://github.com/valentinafloreznazzar/cursorklair — el proyecto iOS está en la carpeta **`Klair/`** (abrir `Klair.xcodeproj` en Xcode). Guía rápida: [Klair/QUICKSTART.md](./Klair/QUICKSTART.md). |
 | **Enlace “deployed” / URL del proyecto** | https://cursor-hackathon-two.vercel.app — **página oficial del proyecto Klair en vivo**: explica la app iOS, enlaza a `Klair/` en GitHub y QUICKSTART, y un chat demo con Gemini. Cumple el requisito del hackathon; la experiencia completa es la app. |
-| **App iOS para el jurado (recomendado)** | Si el formulario tiene notas o campo extra: indica **TestFlight** (enlace público de prueba externa) o un **vídeo corto** (p. ej. Loom/YouTube no listado) mostrando la app. Sin eso, el jurado puede compilar desde el repo siguiendo QUICKSTART (necesitan Mac + Xcode). |
+| **App iOS para el jurado (recomendado)** | **TestFlight:** pega el enlace en `testflight-config.js` (`window.KLAIR_TESTFLIGHT_URL`) y redespliega Vercel — el botón aparece en la landing. Copia la misma URL en el formulario si hay campo libre. Alternativa: **vídeo** (Loom/YouTube) o compilar con [QUICKSTART](./Klair/QUICKSTART.md). |
 
-Sustituye la fila de TestFlight/vídeo cuando tengas el enlace real.
+Cuando tengas el enlace de Apple, actualiza `testflight-config.js` y vuelve a hacer `git push` + deploy (o Actions si configuraste secretos).
 
 **Opcional (GitHub Actions → Vercel):** en **Settings → Secrets → Actions** añade `VERCEL_TOKEN` y `GEMINI_API_KEY` si quieres deploy automático en cada push; si no, `npm run deploy` desde tu máquina sigue valiendo.
 

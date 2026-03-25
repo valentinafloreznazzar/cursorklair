@@ -25,12 +25,17 @@
         <li><strong>Código fuente:</strong> clona o abre el repo y entra en <code>Klair/</code> — abre <code>Klair.xcodeproj</code> en Xcode.</li>
         <li><strong>Guía paso a paso:</strong> <a href="https://github.com/valentinafloreznazzar/cursorklair/blob/main/Klair/QUICKSTART.md" rel="noopener">QUICKSTART.md</a> (simulador o iPhone).</li>
         <li><strong>Demo sin APIs:</strong> por defecto la app usa datos y respuestas de muestra (<em>mock</em>) para que el flujo se vea al instante.</li>
-        <li><strong>TestFlight:</strong> si publicas un enlace de prueba externa, añádelo en el README del repo o en el formulario del hackathon para el jurado.</li>
+        <li><strong>TestFlight:</strong> cuando tengas el enlace público, pégalo en <code>testflight-config.js</code> y vuelve a desplegar; aparecerá en la siguiente sección.</li>
       </ol>
       <p class="cta-row">
         <a class="btn-secondary" href="https://github.com/valentinafloreznazzar/cursorklair/tree/main/Klair" rel="noopener">Ver carpeta Klair en GitHub</a>
         <a class="btn-secondary ghost" href="https://github.com/valentinafloreznazzar/cursorklair" rel="noopener">Repositorio completo</a>
       </p>
+    </section>
+
+    <section class="ios-panel testflight" aria-labelledby="tf-heading">
+      <h2 id="tf-heading">Probar en iPhone (TestFlight)</h2>
+      <div id="testflight-mount" class="testflight-mount"></div>
     </section>
 
     <section class="ios-panel muted" aria-labelledby="vercel-heading">
@@ -49,6 +54,50 @@
       <article id="reply" class="reply" hidden></article>
     </section>
   </main>
+  <script src="testflight-config.js"></script>
+  <script>
+    (function () {
+      const mount = document.getElementById('testflight-mount');
+      if (!mount) return;
+      const raw = (typeof window.KLAIR_TESTFLIGHT_URL === 'string' && window.KLAIR_TESTFLIGHT_URL.trim()) || '';
+      let ok = false;
+      try {
+        const u = new URL(raw);
+        ok = u.protocol === 'https:' && u.hostname === 'testflight.apple.com';
+      } catch (_) {}
+      if (ok) {
+        const p = document.createElement('p');
+        p.className = 'lede';
+        p.textContent = 'Instala la app TestFlight desde el App Store si no la tienes. Luego abre el enlace en el iPhone.';
+        const row = document.createElement('p');
+        row.className = 'cta-row';
+        const a = document.createElement('a');
+        a.className = 'btn-secondary';
+        a.rel = 'noopener noreferrer';
+        a.target = '_blank';
+        a.href = raw;
+        a.textContent = 'Abrir invitación en TestFlight';
+        row.appendChild(a);
+        mount.appendChild(p);
+        mount.appendChild(row);
+      } else {
+        const p = document.createElement('p');
+        p.className = 'lede';
+        p.append(
+          document.createTextNode(
+            'Cuando App Store Connect te dé el enlace público, edita testflight-config.js en la raíz del repo (window.KLAIR_TESTFLIGHT_URL), haz commit y deploy. Mientras tanto: '
+          )
+        );
+        const a = document.createElement('a');
+        a.href = 'https://github.com/valentinafloreznazzar/cursorklair/blob/main/Klair/QUICKSTART.md';
+        a.rel = 'noopener';
+        a.textContent = 'QUICKSTART';
+        p.appendChild(a);
+        p.appendChild(document.createTextNode(' en Xcode.'));
+        mount.appendChild(p);
+      }
+    })();
+  </script>
   <script>
     const promptEl = document.getElementById('prompt');
     const sendBtn = document.getElementById('send');
